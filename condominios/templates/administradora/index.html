@@ -12,6 +12,7 @@
 
     <title>Administradora JJ24-30</title>
 
+    <link href="{% static 'img/icono.png' %}" rel="shortcut icon" type="image/x-icon">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
 
@@ -21,7 +22,9 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
+    
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
 </head>
 
 <body id="page-top" class="index">
@@ -253,7 +256,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form method="post">{% csrf_token %}
+                    <form id="form_contacto">
+                        {% csrf_token %}
                         <div class="form-group">
                             {{ Contact_form.nombre }}
                             {{ Contact_form.nombre.errors }}
@@ -266,31 +270,75 @@
                             {{ Contact_form.mensaje }}
                             {{ Contact_form.mensaje.errors }}
                         </div>
-                        {% if email_success %}
-                            <div class="alert alert-success">
-                                {{ email_success }}
-                            </div>
-                        {% endif %}
+                        <div id="email_success"></div>
                                                 
                         <button type="submit" class="btn btn-xl">Enviar Mensaje</button>
                     </form>
                 </div>
             </div>
         </div>
+
+        <script>
+            function enviar_correo(){                
+
+                var parametros = {
+                    "inputName" : $('#inputName').val(),
+                    "inputEmail" : $('#inputEmail').val(),
+                    "inputMensaje" : $('#inputMensaje').val()
+                };
+
+                $.ajaxSetup({
+                    beforeSend: function(xhr, settings){
+                        $("#email_success").html('<p>Enviando, espere por favor...</p>');
+                        function getCookie(name){
+                            var cookieValue = null;
+                            if(document.cookie && document.cookie != ''){
+                                var cookies = document.cookie.split(';');
+                                for (var i = 0; i < cookies.length; i++){
+                                    var cookie = jQuery.trim(cookies[i]);
+                                    if (cookie.substring(0, name.length + 1) == (name + '=')){
+                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                        break;
+                                    }
+                                }
+                            }
+                        return cookieValue;
+                        }
+                        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                        }
+                    }
+                });
+
+                $.ajax({
+                    data:  parametros,
+                    url:   'envio_correo/',
+                    type:  'POST',
+                    success:  function () {
+                        $("#email_success").html('<div class="alert alert-success text-center" role="alert"><b>Su mensaje se ha enviado satisfactoriamente.</b></div>');
+                    },
+                    error : function() {
+                        $("#email_success").html('<div class="alert alert-danger text-center" role="alert"><b>Ha ocurrido un error durante el envio de su mensaje.</b></div>');
+                    }
+                });                
+            }
+
+            $('#form_contacto').submit(function(){                 
+                event.preventDefault();
+                enviar_correo(); 
+            });
+        </script>
     </section>
 
-    <footer>
+    <footer class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Administradora JJ-2430 - 2016</span>
+                    <span class="copyright">Copyright &copy; Administradora JJ24-30</span>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- jQuery -->
-    <script src="{% static 'js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>

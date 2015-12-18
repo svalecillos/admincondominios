@@ -1,21 +1,24 @@
-from django.shortcuts import render
-#from django.core.mail import send_mail
+from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
+from django.http import HttpResponse
 from .forms import Contact_form
 		
 def index(request):
 	
-	if request.method == 'POST':
-		formulario_contacto = Contact_form(request.POST)
-		if formulario_contacto.is_valid():
-			asunto = 'Nuevo mensaje desde la pagina web Administradora JJ24-30'
-			mensaje = """%s | %s
-
-			%s"""%(formulario_contacto.cleaned_data['nombre'],formulario_contacto.cleaned_data['email'],formulario_contacto.cleaned_data['mensaje'])
-			mail = EmailMessage(asunto, mensaje, destinatario)
-			mail.send()
-		return render(request,'index.html',{'email_success' : mensaje})
-	else:
-		formulario_contacto = Contact_form()
-
+	formulario_contacto = Contact_form()
 	return render(request,'index.html',{'Contact_form' : formulario_contacto})
+
+def envio_correo(request):
+	if request.is_ajax():
+		asunto = 'Nuevo mensaje desde la pagina web Administradora JJ24-30'
+		mensaje = """%s | %s
+
+%s"""%(request.POST['inputName'], request.POST['inputEmail'], request.POST['inputMensaje'])
+		remitente = 'correo@gmail.com'
+		destinatario = ['correo@gmail.com']
+		mail = EmailMessage(asunto, mensaje, remitente, destinatario)
+		mail.send(fail_silently=False)
+		return HttpResponse(' ')
+
+	else:
+		return redirect('/')
