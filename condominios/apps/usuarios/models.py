@@ -38,8 +38,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 	nombre = models.CharField(max_length=50)
 	apellido=models.CharField(max_length=50)
 	correo = models.EmailField()
-	#telefono_habitacion = models.PhoneNumberField(max_length=11)
-	#telefono_movil = models.PhoneNumberField(max_length=11)
+	telefono_habitacion = models.CharField(max_length=12,null=True)
+	telefono_movil = models.CharField(max_length=12,null=True)
 	numero_vivienda = models.CharField(max_length=5)
 	is_active = models.BooleanField(default=True)
 	is_staff = models.BooleanField(default=False)
@@ -48,6 +48,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 	USERNAME_FIELD ='usuario'
 	REQUIRED_FIELDS =['cedula','nombre','apellido','correo']
 
+	def __str__(self):
+		return self.nombre + " " + self.apellido
 	def get_short_name(self):
 		return self.usuario
 

@@ -51,3 +51,26 @@ class Parroquia(models.Model):
     class Meta:
         verbose_name = u'Parroquía'
         verbose_name_plural = u'Parroquías'
+
+class PrefijoTelefonico(models.Model):
+    
+    municipio = models.ForeignKey(Municipio)
+    prefijo = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return str(self.prefijo)
+
+    class Meta:
+        verbose_name = u'Prefijo telefonico'
+        verbose_name_plural = u'Prefijos telefonicos'
+
+class prefijoCelular(models.Model):
+    
+    prefijo = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return str(self.prefijo)
+        
+    class Meta:
+        verbose_name = u'Prefijo celular'
+        verbose_name_plural = u'Prefijos celulares'

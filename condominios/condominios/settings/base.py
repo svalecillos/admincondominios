@@ -23,7 +23,6 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'apps.usuarios',
-    'apps.direccion',
     'apps.venezuela', 
     'apps.administradora',
     )
@@ -134,7 +133,7 @@ BOOTSTRAP3 = {
 
 WSGI_APPLICATION = 'condominios.wsgi.application'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 USE_I18N = True

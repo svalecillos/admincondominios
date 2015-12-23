@@ -6,7 +6,15 @@ admin.site.register(Proveedor)
 admin.site.register(TipoEdificacion)
 admin.site.register(ServicioMensual)
 admin.site.register(ServicioEspecial)
-admin.site.register(CostoServicioMensual)
+
+class CostoServicioMensualAdmin(admin.ModelAdmin):
+    list_display = ('servicioMensual', 'costo',)
+admin.site.register(CostoServicioMensual,CostoServicioMensualAdmin)
+
+class CostoServicioEspecialAdmin(admin.ModelAdmin):
+    list_display = ('servicioEspecial', 'costo',)
+admin.site.register(CostoServicioEspecial,CostoServicioEspecialAdmin)
+
 admin.site.register(CargoServicioMensual)
 admin.site.register(CargoServicioEspecial)
 

@@ -11,6 +11,9 @@ class TipoEdificacion(models.Model):
 	def __str__(self):
 		return self.edificacion
 
+	#def __iter__(self):
+	#	return (self.edificacion)
+
 	class Meta:
 		verbose_name_plural = "Edificaciones"
 
@@ -18,16 +21,17 @@ class Condominio(models.Model):
 	
 	condominio = models.CharField(max_length=100,unique=True)
 	rif = models.CharField(max_length=13,blank=True, null=True)
-	telefono = models.CharField(max_length=12,null=True)
+	telefono = models.CharField(max_length=12,null=True,default='')
 	correo = models.EmailField(null=True)
 	parroquia = models.ForeignKey(Parroquia)
-	ciudad = models.CharField(max_length=100)
+	ciudad  = models.ForeignKey(Ciudad)
 	avenidaCalle = models.CharField(max_length=150)
 	urbanizacionSector = models.CharField(max_length=80)
 	tipoEdificacion = models.ForeignKey(TipoEdificacion,null=True)
 	nombreEdificacion = models.CharField(max_length=150,null=True)
 	estatus = models.BooleanField(default=True)
-	creadorPor = models.ForeignKey(Usuario)
+	creadoPor = models.ForeignKey(Usuario)
+
 
 	def __str__(self):
 		return self.condominio
@@ -39,10 +43,10 @@ class Proveedor(models.Model):
 
 	proveedor = models.CharField(max_length=100)
 	rif = models.CharField(max_length=13,blank=True, null=True)
+	telefono = models.CharField(max_length=12,null=True)	
 	correo = models.EmailField(null=True)
-	telefono = models.CharField(max_length=12,null=True)
 	condominio = models.ForeignKey(Condominio)
-	creadorPor = models.ForeignKey(Usuario)
+	creadoPor = models.ForeignKey(Usuario)
 
 	def __str__(self):
 		return self.proveedor
@@ -65,7 +69,7 @@ class ServicioMensual(models.Model):
 
 class CostoServicioMensual(models.Model):
 
-	costo = models.DecimalField(max_digits=10, decimal_places=5)
+	costo = models.DecimalField(max_digits=10, decimal_places=2)
 	fecha = models.DateTimeField(auto_now=True)
 	condominio = models.ForeignKey(Condominio)
 	servicioMensual = models.ForeignKey(ServicioMensual)
@@ -78,12 +82,12 @@ class CostoServicioMensual(models.Model):
 
 class CargoServicioMensual(models.Model):
 
-	monto = models.DecimalField(max_digits=10, decimal_places=5)
+	monto = models.DecimalField(max_digits=10, decimal_places=2)
 	fecha = models.DateTimeField(auto_now=True)
 	condominio = models.ForeignKey(Condominio)
 	proveedor = models.ForeignKey(Proveedor)
 	servicioMensual = models.ForeignKey(ServicioMensual)
-	creadorPor = models.ForeignKey(Usuario)
+	creadoPor = models.ForeignKey(Usuario)
 
 	def __str__(self):
 		return self.monto
@@ -106,26 +110,26 @@ class ServicioEspecial(models.Model):
 
 class CostoServicioEspecial(models.Model):
 
-	costo = models.DecimalField(max_digits=10, decimal_places=5)
+	costo = models.DecimalField(max_digits=10, decimal_places=2)
 	cuota = models.PositiveSmallIntegerField()
 	fecha = models.DateTimeField(auto_now=True)
 	condominio = models.ForeignKey(Condominio)
 	servicioEspecial = models.ForeignKey(ServicioEspecial)
 
 	def __str__(self):
-		return self.costo
+		return self.servicoEspecial.servicoEspecial
 
 	class Meta:
-		verbose_name_plural = "Costo de servicio especiales"
+		verbose_name_plural = "Costo de servicios especiales"
 
 class CargoServicioEspecial(models.Model):
 
-	monto = models.DecimalField(max_digits=10, decimal_places=5)
+	monto = models.DecimalField(max_digits=10, decimal_places=2)
 	fecha = models.DateTimeField(auto_now=True)
 	condominio = models.ForeignKey(Condominio)
 	proveedor = models.ForeignKey(Proveedor)
 	servicioEspecial = models.ForeignKey(ServicioEspecial)
-	creadorPor = models.ForeignKey(Usuario)
+	creadoPor = models.ForeignKey(Usuario)
 
 	def __str__(self):
 		return self.monto
@@ -135,7 +139,7 @@ class CargoServicioEspecial(models.Model):
 
 class CuentaCondominio(models.Model):
 
-	condominio = models.ForeignKey(Condominio)
+	condominio = models.OneToOneField(Condominio)
 	saldo = models.DecimalField(max_digits=10, decimal_places=2)
 	fecha = models.DateTimeField(auto_now=True)
 
@@ -147,7 +151,7 @@ class CuentaCondominio(models.Model):
 
 class CuentaUsuario(models.Model):
 
-	usuario = models.ForeignKey(Usuario)
+	usuario = models.OneToOneField(Usuario)
 	saldo = models.DecimalField(max_digits=10, decimal_places=2)
 	fecha = models.DateTimeField(auto_now=True)
 
@@ -171,7 +175,7 @@ class Transaccion(models.Model):
 		super (Transaccion, self).save()
 
 	def __str__(self):
-		return self.fecha
+		return str(self.fecha)
 
 	class Meta:
 		verbose_name_plural = "Transacciones"

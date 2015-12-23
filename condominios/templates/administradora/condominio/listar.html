@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+      <div class="page-content vertical-align-middle">
+      <div class="brand">
+         {{ prueba }}
+        <h2 class="brand-text">Listar condominio</h2>
+      </div>
+                        {% for condominio in condominios %}
+                            <div>{{ condominio.condominio }}</div>
+
+                        {% endfor %}
+      <div class="form-group clearfix">          
+          <a class="pull-center" href="{% url 'usuarios_app:login' %}">Volver</a>
+      </div>
+    </div>
+{{ form.errors }}
+
+    <div class="multiselect">
+    <select name="estado" data-query="estados" title="Estado"></select>
+    <select name="ciudad" data-query="ciudades" data-parent="estado" title="Ciudad"></select>
+    <select name="municipio" data-query="municipios" data-parent="estado" title="Municipio"></select>
+    <select name="parroquia" data-query="parroquias" data-parent="municipio" title="Parroquia"></select>
+</div>
+
+
+{% endblock contenido %}

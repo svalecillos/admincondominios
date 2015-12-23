@@ -5,4 +5,6 @@ urlpatterns = [
 	url(r'^',include('apps.usuarios.urls', namespace="usuarios_app")),
 	url(r'^',include('apps.administradora.urls', namespace="administradora_app")),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^geo/(?P<type>estados)/$', 'apps.venezuela.views.geo', name='geo'),
+	url(r'^geo/(?P<type>ciudades|municipios|parroquias)/(?P<parent_id>[0-9]+)$','apps.venezuela.views.geo', name='geo'),
 ]

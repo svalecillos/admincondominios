@@ -3,12 +3,15 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import RegistrarUsuarioForm, LoginForm
+from apps.administradora.forms import *
+from apps.administradora.models import *
 from .models import Usuario
 from .functions import LogIn
 
 
 @login_required()
 def index(request):
+
 	return render(request, 'home.html')
 
 def inicio(request):
@@ -27,7 +30,7 @@ def inicio(request):
 			if login_form.is_valid():
 				LogIn(request, login_form.cleaned_data['usuario'],
 						login_form.cleaned_data['password'])
-				return redirect('condominio/')
+				return redirect('home/')
 	else:
 		login_form = LoginForm()
 	return render(request, 'usuario/login.html', 

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+      <div class="page-content vertical-align-middle">
+      <div class="brand">
+         {{ prueba }}
+        <h2 class="brand-text">Registrar condominio</h2>
+      </div>
+      <form method="POST" role="form">{% csrf_token %}
+		
+        <div class="form-group">
+          <label for="inputEmail">Nombre</label>
+          {{ form.condominio }}
+          {{ form.condominio.errors }}
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">Rif</label>
+          {{ form.rif }}
+          {{ form.rif.errors }}
+        </div>
+        <div class="form-group">
+          <label for="telefono">telefono</label>
+          {{ form.telefono }}
+          {{ form.telefono.errors }}
+        </div>
+        <div class="form-group">
+          <label for="correo">correo</label>
+          {{ form.correo }}
+          {{ form.correo.errors }}
+        </div>
+        <div class="form-group">
+          <label for="parroquia">parroquia</label>
+          {{ form.parroquia }}
+          {{ form.parroquia.errors }}
+        </div>
+        <div class="form-group">
+          <label for="ciudad">ciudad</label>
+          {{ form.ciudad }}
+          {{ form.ciudad.errors }}
+        </div>
+        <div class="form-group">
+          <label for="avenidaCalle">avenida/Calle</label>
+          {{ form.avenidaCalle }}
+          {{ form.avenidaCalle.errors }}
+        </div>
+        <div class="form-group">
+          <label for="urbanizacionSector">urbanizacion/Sector</label>
+          {{ form.urbanizacionSector }}
+          {{ form.urbanizacionSector.errors }}
+        </div>
+        <div class="form-group">
+          <label for="tipoEdificacion">Tipo de edificio</label>
+          {{ form.tipoEdificacion }}
+          {{ form.tipoEdificacion.errors }}
+        </div>
+        <div class="form-group">
+          <label for="nombreEdificacion">Nombre edificio</label>
+          {{ form.nombreEdificacion }}
+          {{ form.nombreEdificacion.errors }}
+        </div>          
+        <button type="submit" class="btn btn-primary btn-block">Guardar condominio</button>
+      </form>
+      <div class="form-group clearfix">          
+          <a class="pull-center" href="{% url 'usuarios_app:login' %}">Volver</a>
+      </div>
+    </div>
+{{ form.errors }}
+
+    <div class="multiselect">
+    <select name="estado" data-query="estados" title="Estado"></select>
+    <select name="ciudad" data-query="ciudades" data-parent="estado" title="Ciudad"></select>
+    <select name="municipio" data-query="municipios" data-parent="estado" title="Municipio"></select>
+    <select name="parroquia" data-query="parroquias" data-parent="municipio" title="Parroquia"></select>
+</div>
+
+
+{% endblock contenido %}
