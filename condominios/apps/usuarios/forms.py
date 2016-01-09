@@ -1,6 +1,25 @@
 from django import forms
 from .models import Usuario
 
+class LoginForm(forms.Form):
+
+	usuario = forms.CharField(max_length=50, 
+				widget = forms.TextInput(attrs = {
+					'type' : 'text',
+					'class' : 'form-control',
+					'placeholder' : 'Ingresa tu nombre de usuario',
+					'id': 'inputName',
+					'required' : ''
+					}))
+	password = forms.CharField(max_length=50,
+	 			widget = forms.PasswordInput(attrs = {
+	 				'type' : 'password',
+	 				'class' : 'form-control',
+	 				'placeholder' : 'Ingresa tu clave',
+	 				'id': 'inputPassword',
+	 				'required' : ''
+	 				}))
+
 class RegistrarUsuarioForm(forms.ModelForm):
 
 	class Meta:
@@ -50,20 +69,3 @@ class RegistrarUsuarioForm(forms.ModelForm):
 				'id': 'inputPassword'
 				})
 		}
-
-class LoginForm(forms.Form):
-
-	usuario = forms.CharField(max_length=50, 
-				widget = forms.TextInput(attrs = {
-					'type' : 'text',
-					'class' : 'form-control',
-					'placeholder' : 'Ingresa tu nombre de usuario',
-					'id': 'inputName'
-					}))
-	password = forms.CharField(max_length=50,
-	 			widget = forms.PasswordInput(attrs = {
-	 				'type' : 'password',
-	 				'class' : 'form-control',
-	 				'placeholder' : 'Ingresa tu clave',
-	 				'id': 'inputPassword'
-	 				}))

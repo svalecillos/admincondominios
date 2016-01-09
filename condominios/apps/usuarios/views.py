@@ -10,11 +10,10 @@ from .functions import LogIn
 
 
 @login_required()
-def index(request):
-
-	return render(request, 'home.html')
-
 def inicio(request):
+	return render(request, 'inicio.html')
+
+def login(request):
 	if request.method == "POST":
 		# if 'register_form' in request.POST:
 		# 	registrar_usuario = RegistrarUsuarioForm(request.POST)
@@ -30,7 +29,7 @@ def inicio(request):
 			if login_form.is_valid():
 				LogIn(request, login_form.cleaned_data['usuario'],
 						login_form.cleaned_data['password'])
-				return redirect('home/')
+				return redirect('/inicio/')
 	else:
 		login_form = LoginForm()
 	return render(request, 'usuario/login.html', 

@@ -6,9 +6,6 @@
 </head>
 
 <body class="dashboard">
-  <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
 
     {% include "header.html" %}
 
@@ -28,7 +25,10 @@
   </div>
   <!-- End Page -->
 
-  {% include "footer.html" %}
+  <footer class="site-footer">
+    <div class="site-footer-right">© Administradora JJ24-30 - {% now "Y" %}
+    </div>
+  </footer>
 
   <!-- Core  -->
   <script src="{% static 'vendor/jquery/jquery.js' %}"></script>

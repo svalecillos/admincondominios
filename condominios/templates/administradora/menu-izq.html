@@ -3,7 +3,30 @@
       <div>
         <div>
           <ul class="site-menu">
+
+            <li class="site-menu-category">Propietario</li>
+
+            <li class="site-menu-item">
+              <a class="animsition-link" href="{% url 'usuarios_app:inicio' %}">
+                <i class="site-menu-icon bd-angular" aria-hidden="true"></i>
+                <span class="site-menu-title">Inicio</span>
+              </a>
+            </li>
+            <li class="site-menu-item">
+              <a class="animsition-link" href="{% url 'usuarios_app:inicio' %}">
+                <i class="site-menu-icon bd-angular" aria-hidden="true"></i>
+                <span class="site-menu-title">Registrar Pago</span>
+              </a>
+            </li>
+            <li class="site-menu-item">
+              <a class="animsition-link" href="{% url 'usuarios_app:inicio' %}">
+                <i class="site-menu-icon bd-angular" aria-hidden="true"></i>
+                <span class="site-menu-title">Historial de Movimientos</span>
+              </a>
+            </li>
+
             <li class="site-menu-category">Administradora</li>
+
             <li class="site-menu-item">
               <a class="animsition-link" href="{% url 'administradora_app:condominioRegistrar' %}" data-slug="angular">
                 <i class="site-menu-icon bd-angular" aria-hidden="true"></i>
@@ -39,170 +62,10 @@
                 <i class="site-menu-icon bd-angular" aria-hidden="true"></i>
                 <span class="site-menu-title">Costos mensuales</span>
               </a>
-            </li>                                                        
-            <li class="site-menu-item has-sub">
-              <a href="javascript:void(0)" data-slug="layout">
-                <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
-                <span class="site-menu-title">Layouts</span>
-                <span class="site-menu-arrow"></span>
-              </a>
-              <ul class="site-menu-sub">
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/grids.html" data-slug="layout-grids">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Grid Scaffolding</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/headers.html" data-slug="layout-headers">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Different Headers</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/bordered-header.html" data-slug="layout-bordered-header">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Bordered Header</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/two-columns.html" data-slug="layout-two-columns">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Two Columns</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/boxed.html" data-slug="layout-boxed">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Boxed Layout</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/blank.html" data-slug="layout-blank">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Blank Page</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/menu-collapsed.html" data-slug="layout-menu-collapsed">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Menu Collapsed</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/menu-expended.html" data-slug="layout-menu-expended">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Menu Expended</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="layouts/menubar-flipped.html" data-slug="layout-menubar-flipped">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Menubar Flipped</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="site-menu-category">Apps</li>
-            <li class="site-menu-item has-sub">
-              <a href="javascript:void(0)" data-slug="app">
-                <i class="site-menu-icon wb-grid-4" aria-hidden="true"></i>
-                <span class="site-menu-title">Apps</span>
-                <span class="site-menu-arrow"></span>
-              </a>
-              <ul class="site-menu-sub">
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="apps/calendar/calendar.html" data-slug="app-calendar">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Calendar</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="apps/contacts/contacts.html" data-slug="app-contacts">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Contacts</span>
-                  </a>
-                </li>
-                <li class="site-menu-item has-sub">
-                  <a href="javascript:void(0)" data-slug="app-document">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Documents</span>
-                    <span class="site-menu-arrow"></span>
-                  </a>
-                  <ul class="site-menu-sub">
-                    <li class="site-menu-item">
-                      <a class="animsition-link" href="apps/documents/articles.html" data-slug="app-document-articles">
-                        <i class="site-menu-icon " aria-hidden="true"></i>
-                        <span class="site-menu-title">Articles</span>
-                      </a>
-                    </li>
-                    <li class="site-menu-item">
-                      <a class="animsition-link" href="apps/documents/categories.html" data-slug="app-document-categories">
-                        <i class="site-menu-icon " aria-hidden="true"></i>
-                        <span class="site-menu-title">Categories</span>
-                      </a>
-                    </li>
-                    <li class="site-menu-item">
-                      <a class="animsition-link" href="apps/documents/article.html" data-slug="app-document-article">
-                        <i class="site-menu-icon " aria-hidden="true"></i>
-                        <span class="site-menu-title">Article</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="apps/mailbox/mailbox.html" data-slug="app-mailbox">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Mailbox</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="apps/projects/projects.html" data-slug="app-projects">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Projects</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="apps/forum/forum.html" data-slug="app-forum">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Forum</span>
-                  </a>
-                </li>
-                <li class="site-menu-item">
-                  <a class="animsition-link" href="apps/media/overview.html" data-slug="app-media">
-                    <i class="site-menu-icon " aria-hidden="true"></i>
-                    <span class="site-menu-title">Media</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="site-menu-category">Angular UI</li>
-            <li class="site-menu-item">
-              <a class="animsition-link" href="angular/#/angularui/bootstrap" data-slug="angular">
-                <i class="site-menu-icon bd-angular" aria-hidden="true"></i>
-                <span class="site-menu-title">Angular UI</span>
-                <div class="site-menu-label">
-                  <span class="label label-danger label-round">new</span>
-                </div>
-              </a>
-            </li>
+            </li>  
           </ul>
-
         </div>
       </div>
-    </div>
-
-    <div class="site-menubar-footer">
-      <a href="javascript: void(0);" class="fold-show" data-placement="top" data-toggle="tooltip"
-      data-original-title="Settings">
-        <span class="icon wb-settings" aria-hidden="true"></span>
-      </a>
-      <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
-        <span class="icon wb-eye-close" aria-hidden="true"></span>
-      </a>
-      <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Logout">
-        <span class="icon wb-power" aria-hidden="true"></span>
-      </a>
     </div>
   </div>
   <div class="site-gridmenu">

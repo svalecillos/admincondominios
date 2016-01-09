@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from .models import *
 from apps.usuarios.models import Usuario
 from .forms import *
-
 from django.core.urlresolvers import reverse, reverse_lazy
 
 
