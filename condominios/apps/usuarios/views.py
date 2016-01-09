@@ -1,19 +1,13 @@
-from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView
 from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.contrib.auth import logout, authenticate
+from django.core.mail import EmailMessage
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .forms import RegistrarUsuarioForm, LoginForm
-from apps.administradora.forms import *
-from apps.administradora.models import *
+from django.contrib.auth import logout
+from .forms import LoginForm, Contact_form, RegistrarUsuarioForm
 from .models import Usuario
 from .functions import LogIn
 
-
-@login_required()
-def inicio(request):
-	return render(request, 'inicio.html')
-
-def login(request):
+def index(request):
 	if request.method == "POST":
 		# if 'register_form' in request.POST:
 		# 	registrar_usuario = RegistrarUsuarioForm(request.POST)
@@ -31,9 +25,28 @@ def login(request):
 						login_form.cleaned_data['password'])
 				return redirect('/inicio/')
 	else:
+		formulario_contacto = Contact_form()
 		login_form = LoginForm()
-	return render(request, 'usuario/login.html', 
-				{'login_form' : login_form})
+	return render(request,'index.html',{'Contact_form' : formulario_contacto,'login_form' : login_form})
+	
+def envio_correo(request):
+	if request.is_ajax():
+		asunto = 'Nuevo mensaje desde la pagina web Administradora JJ24-30'
+		mensaje = """%s | %s
+
+%s"""%(request.POST['inputName'], request.POST['inputEmail'], request.POST['inputMensaje'])
+		remitente = 'correo@gmail.com'
+		destinatario = ['correo@gmail.com']
+		mail = EmailMessage(asunto, mensaje, remitente, destinatario)
+		mail.send(fail_silently=False)
+		return HttpResponse(' ')
+
+	else:
+		return redirect('/')
+
+@login_required()
+def inicio(request):
+	return render(request, 'inicio.html')
 
 def registro(request):
 	if request.method == "POST":

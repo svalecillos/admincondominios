@@ -1,32 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView
-from django.core.mail import EmailMessage
-from django.http import HttpResponse
-from .models import *
 from apps.usuarios.models import Usuario
+from .models import *
 from .forms import *
 from django.core.urlresolvers import reverse, reverse_lazy
 
-
-def index(request):
-	
-	formulario_contacto = Contact_form()
-	return render(request,'index.html',{'Contact_form' : formulario_contacto})
-
-def envio_correo(request):
-	if request.is_ajax():
-		asunto = 'Nuevo mensaje desde la pagina web Administradora JJ24-30'
-		mensaje = """%s | %s
-
-%s"""%(request.POST['inputName'], request.POST['inputEmail'], request.POST['inputMensaje'])
-		remitente = 'correo@gmail.com'
-		destinatario = ['correo@gmail.com']
-		mail = EmailMessage(asunto, mensaje, remitente, destinatario)
-		mail.send(fail_silently=False)
-		return HttpResponse(' ')
-
-	else:
-		return redirect('/')
 
 class CondominioRegistrarView(CreateView):
 
