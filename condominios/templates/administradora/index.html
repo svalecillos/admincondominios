@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="La Administradora JJ24-30 es una empresa prestadora de servicios a los diversos condominios del pais el cual le ofrece la facilidad de poder aministrar sus cuentas y servicios publicos o especiales para asi brindarle la mejos satifaccion a nuestros propietarios del condominio">
+    <meta name="description" content="La Administradora JJ24-30 es una empresa prestadora de servicios a los condominios del país el cual le ofrece la facilidad de poder administrar sus cuentas y servicios públicos o especiales para así brindarles la mejor satisfacción a nuestros propietarios del condominio">
     <meta name="author" content="Tecnoagropro">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icono.png' %}">
 
@@ -77,28 +77,24 @@
 	<!-- End preloading -->
 
 	<!-- Start navbar -->
-	<nav class="navbar navbar-fixed-top">
-		<div class="container relative">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-					<span class="icon icon-menu"></span>
-				</button>
-				<a class="navbar-brand" href="#">Administradora JJ24-30</a>
-			</div>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container relative">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon icon-menu"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="{% static 'frontend/img/logo-top.png' %}" alt="" /></a>
+            </div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="page-scroll active"><a href="#home">INDICE</a></li>
-					<li class="page-scroll"><a href="#about">About us</a></li>
-					<li class="page-scroll"><a href="#features">Features</a></li>
-					<li class="page-scroll"><a href="#gallery">Gallery</a></li>
-					<li class="page-scroll"><a href="#pricing">Pricing</a></li>
-					<li class="page-scroll"><a href="#team">Team</a></li>
-					<li class="page-scroll"><a href="#blog">Blog</a></li>
-					<li class="page-scroll"><a href="#contact">Contact</a></li>
-				</ul>
-                <ul class="navbar-right">
-					<li><a href="#" class="btn btn-link"><i class="icon-lock"></i> Login</a></li>
-					<li><a href="#" class="btn btn-primary btn-bavel">Register</a></li>
+					<li class="page-scroll active"><a href="#home">Inicio</a></li>
+					<li class="page-scroll"><a href="#about">La Empresa</a></li>
+					<li class="page-scroll"><a href="#features">Servicios</a></li>
+					<!--<li class="page-scroll"><a href="#gallery">Galeria</a></li>-->
+					<li class="page-scroll"><a href="#pricing">Enlaces de Interés</a></li>
+					<li class="page-scroll"><a href="#team">Equipo</a></li>
+					<!--<li class="page-scroll"><a href="#blog">Blog</a></li>-->
+					<li class="page-scroll"><a href="#contact">Contacto</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -109,15 +105,15 @@
 	<div class="featured">
 		<div class="container">
 			<div class="row form-wrapper">
-				<div class="col-md-10 col-sm-12">
+				<div class="col-lg-12">
 					<img src="{% static 'frontend/img/banner.png' %}" class="img-responsive" alt=""/>
 				</div>
 				<div class="main-form">
 					<img src="{% static 'frontend/img/logo.png' %}" class="img-responsive" alt=""/>
 					<p>
-					Vis dolorem omittam adipiscing cu, ei esse facete consequuntur eum. Mel dicant accumsan ex. Cu omnes regione meliore mei, et tibique corpora abhorreant mei ipsum choro complectitur.
+					Ingresa en nuestro sistema de administracion de condominio
 					</p>
-                    <p>Inicio de Sesion</p>
+                    <h2><p>Inicio de Sesion</p></h2>
 					<form method="post" class="form-horizontal">{% csrf_token %}
 						<div class="form-group">
 							<div class="col-lg-12">
@@ -135,7 +131,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-lg-12">
-								<button type="submit" class="btn btn-primary btn-bavel">Acceder</button>
+								<button type="submit" class="btn btn-primary btn-bavel btn-block">Acceder</button>
 							</div>									
 						</div>
                         <div class="form-group">          
@@ -149,40 +145,7 @@
 		</div>
 	</div>
 	<!-- End featured -->
-	
-    <div class="clearfix"></div>
-    
-    <!-- Start Client -->  
-    <div class="dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 wrap-carousel">
-                    <!-- Start Client Slide -->
-                    <div id="client" class="owl-carousel owl-theme client">
-                      <div class="item-client"><a href="#"><img src="img/client/logo-1.png" alt=""></a></div>
-                      <div class="item-client"><a href="#"><img src="img/client/logo-2.png" alt=""></a></div>
-                      <div class="item-client"><a href="#"><img src="img/client/logo-3.png" alt=""></a></div>
-                      <div class="item-client"><a href="#"><img src="img/client/logo-4.png" alt=""></a></div>
-                      <div class="item-client"><a href="#"><img src="img/client/logo-5.png" alt=""></a></div>
-                      <div class="item-client"><a href="#"><img src="img/client/logo-1.png" alt=""></a></div>
-                      <div class="item-client"><a href="#"><img src="img/client/logo-2.png" alt=""></a></div>
-                      <div class="item-client"><a href="#"><img src="img/client/logo-3.png" alt=""></a></div>   
-                    </div>
-                    <!-- End Client Slide -->
-                    <!-- Start Direction --> 
-                    <div class="direction-middle">
-                        <div class="direction-nav">
-                            <span class="direct-prev prev-client"><i class="icon-circle-left"></i></span>
-                            <span class="direct-next next-client"><i class="icon-circle-right"></i></span>
-                        </div>    
-                    </div>    
-                    <!-- End Direction -->
-                </div>
-            </div>
-        </div>    
-    </div>  
-    <!-- End Client -->
-      
+
     <div class="clearfix"></div>
       
     <!-- Start About Us -->  
@@ -190,7 +153,7 @@
         <div class="container">
             <!-- Start title --> 
             <div class="title-section">
-                <h3>Who We Are <strong>About Us</strong></h3>
+                <h3>La Empresa <strong>¿QUIÉNES SOMOS?</strong></h3>
             </div>
             <!-- End title -->
             <div class="row">
@@ -201,9 +164,9 @@
                         <!-- Start Navigation Tab -->
                         <div class="tabbed_navigation">
                           <ul>
-                            <li class="active">What We Do</li>   
-							<li>Who We Are</li>							
-                            <li>How It Work</li>
+                            <li class="active">Que Hacemos</li>   
+							<li>Quienes Somos</li>							
+                            <li>Como Funciona</li>
                           </ul>      
                         </div>
                         <!-- End Navigation Tab -->
@@ -1179,52 +1142,52 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'frontend/js/ie10-viewport-bug-workaround.js' %}"></script>
 	
     <!-- jquery easing -->
-	<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+	<script src="{% static 'frontend/js/jquery.easing.1.3.js' %}"></script>
 	
     <!-- Owl carousel -->
-	<script src="{% static 'js/owlcarousel/owl.carousel.js' %}"></script>
-    <script src="{% static 'js/owlcarousel/setting.js' %}"></script>
+	<script src="{% static 'frontend/js/owlcarousel/owl.carousel.js' %}"></script>
+    <script src="{% static 'frontend/js/owlcarousel/setting.js' %}"></script>
       
     <!-- Jwg Slider -->
-	<script src="{% static 'js/jwgslider/jwgSlider.js' %}"></script>
-    <script src="{% static 'js/jwgslider/setting.js' %}"></script> 
+	<script src="{% static 'frontend/js/jwgslider/jwgSlider.js' %}"></script>
+    <script src="{% static 'frontend/js/jwgslider/setting.js' %}"></script> 
     
     <!-- Parallax -->
-	<script src="{% static 'js/parallax/jquery.parallax-1.1.3.js' %}"></script>
-    <script src="{% static 'js/parallax/setting.js' %}"></script>   
+	<script src="{% static 'frontend/js/parallax/jquery.parallax-1.1.3.js' %}"></script>
+    <script src="{% static 'frontend/js/parallax/setting.js' %}"></script>   
     
     <!-- masonry -->
-	<script src="{% static 'js/masonry/masonry-3.1.4.js' %}"></script>	  
-	<script src="{% static 'js/masonry/masonry.filter.js' %}"></script> 
-	<script src="{% static 'js/masonry/setting.js' %}"></script>
+	<script src="{% static 'frontend/js/masonry/masonry-3.1.4.js' %}"></script>	  
+	<script src="{% static 'frontend/js/masonry/masonry.filter.js' %}"></script> 
+	<script src="{% static 'frontend/js/masonry/setting.js' %}"></script>
       
 	<!-- ticker -->
-	<script src="{% static 'js/ticker/ticker.js' %}"></script>
-	<script src="{% static 'js/ticker/setting.js' %}"></script>
+	<script src="{% static 'frontend/js/ticker/ticker.js' %}"></script>
+	<script src="{% static 'frontend/js/ticker/setting.js' %}"></script>
 	
 	<!-- prettyPhoto -->
-	<script src="{% static 'js/prettyPhoto/jquery.prettyPhoto.js' %}"></script>
-	<script src="{% static 'js/prettyPhoto/setting.js' %}"></script>
+	<script src="{% static 'frontend/js/prettyPhoto/jquery.prettyPhoto.js' %}"></script>
+	<script src="{% static 'frontend/js/prettyPhoto/setting.js' %}"></script>
 	
     <!-- Hover Direction -->
-	<script src="{% static 'js/hoverdirection/jquery.directional-hover.min.js' %}"></script>	
-	<script src="{% static 'js/hoverdirection/setting.js' %}"></script>
+	<script src="{% static 'frontend/js/hoverdirection/jquery.directional-hover.min.js' %}"></script>	
+	<script src="{% static 'frontend/js/hoverdirection/setting.js' %}"></script>
 
     <!--[if lte IE 9]>
     	<script src="js/tweecool/jquery.xdomainrequest.min.js' %}"></script>      
 	<![endif]-->
 	<!-- Twitter Feed -->
-	<script src="{% static 'js/tweecool/tweecool.js' %}"></script>
-	<script src="{% static 'js/tweecool/setting.js' %}"></script>  
+	<script src="{% static 'frontend/js/tweecool/tweecool.js' %}"></script>
+	<script src="{% static 'frontend/js/tweecool/setting.js' %}"></script>  
       
 	<!-- Go to top -->
-	<script src="{% static 'js/totop/jquery.ui.totop.js' %}"></script>	
-	<script src="{% static 'js/totop/setting.js' %}"></script>
+	<script src="{% static 'frontend/js/totop/jquery.ui.totop.js' %}"></script>	
+	<script src="{% static 'frontend/js/totop/setting.js' %}"></script>
 	
 	<!-- custom javascript -->
-	<script src="{% static 'js/custom.js' %}"></script>
+	<script src="{% static 'frontend/js/custom.js' %}"></script>
   </body>
 </html>

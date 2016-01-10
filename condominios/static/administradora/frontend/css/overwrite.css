@@ -397,10 +397,8 @@ Navbar
 	border:none;
 }
 
-.navbar-right{
+.navbar-nav{
 	float:right;
-	margin:0;
-	padding:0;
 }
 
 .navbar-right li{
