@@ -1,9 +1,12 @@
 *.prpr
 *.pyc
 *.log
+condominios/apps/administradora/__pycache__/
 condominios/apps/administradora/migrations/
 condominios/apps/administradora/migrations/*
+condominios/apps/usuarios/__pycache__/
 condominios/apps/usuarios/migrations/
 condominios/apps/usuarios/migrations/*
+condominios/apps/venezuela/__pycache__/
 condominios/apps/venezuela/migrations/
 condominios/apps/venezuela/migrations/*
