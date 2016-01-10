@@ -1,1 +1,9 @@
 *.prpr
+*.pyc
+*.log
+condominios/apps/administradora/migrations/
+condominios/apps/administradora/migrations/*
+condominios/apps/usuarios/migrations/
+condominios/apps/usuarios/migrations/*
+condominios/apps/venezuela/migrations/
+condominios/apps/venezuela/migrations/*
