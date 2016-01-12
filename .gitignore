@@ -10,5 +10,6 @@ condominios/apps/usuarios/migrations/*
 condominios/apps/venezuela/__pycache__/
 condominios/apps/venezuela/migrations/
 condominios/apps/venezuela/migrations/*
-
+condominios/condominios/__pycache__/
+condominios/condominios/settings/__pycache__/
 condominios/condominios/settings/local.py
