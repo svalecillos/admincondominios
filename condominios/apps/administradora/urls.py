@@ -8,6 +8,7 @@ urlpatterns = patterns('',
 				url(r'^administradora/serviciomensual/registrar$', ServicioMensualRegistrarView.as_view(), name='servicioMensualRegistrar'),
 				url(r'^administradora/costoservicioespecial/registrar$', CostoServicioEspecialRegistrarView.as_view(), name='costoServicioEspecialRegistrar'),
 				url(r'^administradora/costoserviciomensual/registrar$', CostoServicioMensualRegistrarView.as_view(), name='costoServicioMensualRegistrar'),
+				url(r'^registrar-pago$', 'apps.administradora.views.registrar_pago', name='registrar_pago'),
+				url(r'^historial-movimientos$', 'apps.administradora.views.historial_movimientos', name='historial_movimientos')
 				#url(r'^administradora/condominio/listar$', CondominioListarView.as_view(), name='condominioListar'),						
 	)
-	

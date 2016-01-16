@@ -1,4 +1,5 @@
 {% load static %}
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -12,7 +13,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-extend.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/site.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
 
     <link rel="stylesheet" href="{% static 'vendor/animsition/animsition.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/asscrollable/asScrollable.css' %}">
@@ -21,15 +22,18 @@
     <link rel="stylesheet" href="{% static 'vendor/slidepanel/slidePanel.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/flag-icon-css/flag-icon.css' %}">
 
-    <!-- Plugin -->
-    <link rel="stylesheet" href="{% static 'vendor/chartist-js/chartist.css' %}">
-    <link rel="stylesheet" href="{% static 'vendor/jvectormap/jquery-jvectormap.css' %}">
+    <!-- Extras -->
+    <!-- Campo Calendario -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-datepicker/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/jt-timepicker/jquery-timepicker.css' %}">
 
-    <!-- Page -->
-    <link rel="stylesheet" href="{% static 'fonts/weather-icons/weather-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/dashboard/v1.css' %}">
+    <!-- Pagina factura -->
+    <link rel="stylesheet" href="{% static 'css/pages/invoice.css' %}">
+
+    <!-- Fin extras -->    
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/web-icons/web-icons.min.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/brand-icons/brand-icons.min.css' %}">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
@@ -40,3 +44,4 @@
     <script>
     Breakpoints();
     </script>
+</head>

@@ -1,5 +1,5 @@
 .page-invoice-table {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 .page-invoice-table tbody {
@@ -11,7 +11,7 @@
 .page-invoice-table .table > thead > tr > td,
 .page-invoice-table .table > tbody > tr > td,
 .page-invoice-table .table > tfoot > tr > td {
-  padding: 15px 8px;
+  padding: 8px 8px;
 }
 .page-invoice-amount {
   margin-bottom: 40px;

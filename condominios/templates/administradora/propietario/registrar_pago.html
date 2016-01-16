@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<div class="page animsition mostrar">
+	<div class="page-header">
+    <h1 class="page-title">Registrar Pago</h1>
+  </div>
+	<div class="page-content container-fluid">
+		<div class="row">
+		  <div class="col-sm-12">
+		    <!-- Panel Floating Lables -->
+		    <div class="panel">
+	        <div class="panel-body container-fluid">
+	          <form >
+
+	          	<div class="form-group form-material floating row">
+	              <div class="col-sm-6">
+	                <input type="text" class="form-control input-lg" name="banco" id="banco" required/>
+	                <label class="floating-label">Banco</label>
+	              </div>
+	              <div class="col-sm-6">
+	                <select class="form-control input-lg" name="tipoPago" id="tipoPago">
+	                	<option value=""></option>
+		                <option value="transferencia">Transferencia</option>
+		                <option value="deposito">Deposito en efectivo</option>
+		                <option value="cheque">Cheque</option>
+	              	</select>
+	              	<label class="floating-label">Tipo de pago</label>
+	              </div>
+	            </div>
+
+	            <div class="form-group form-material floating row">
+	              <div class="col-sm-6">
+	                <input type="text" class="form-control input-lg" name="numeroReferencia" id="numeroReferencia" required/>
+	                <label class="floating-label">Numero de referencia</label>
+	              </div>
+	              <div class="col-sm-6">
+	                <input type="number" class="form-control input-lg" name="monto" id="monto" required/>
+	                <label class="floating-label">Monto  Bs.</label>
+	              </div>
+	            </div>
+
+	            <div class="form-group form-material floating">         
+                <input type="text" class="form-control input-lg" data-plugin="datepicker" name="fecha" id="fecha" required>
+                <label class="floating-label"><i class="icon wb-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Fecha del pago</label>
+              </div>
+
+	            <div class="form-group form-material floating">
+	              <textarea class="form-control input-lg" rows="3" name="textareaFloating" name="detalle" id="detalle" required></textarea>
+	              <label class="floating-label">Especifique que canceló</label>
+	            </div>
+
+	            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+              </div> 
+	            
+	          </form>
+	        </div>
+	      </div>
+		    <!-- End Panel Floating Lables -->
+		  </div>
+		</div>
+	</div>
+</div>
+{% endblock contenido %}

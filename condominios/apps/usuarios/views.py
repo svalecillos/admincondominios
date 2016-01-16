@@ -3,9 +3,9 @@ from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from .forms import LoginForm, Contact_form, RegistrarUsuarioForm
+from .forms import *
 from .models import Usuario
-from .functions import LogIn
+from .functions import *
 
 def index(request):
 	if request.method == "POST":
@@ -46,7 +46,17 @@ def envio_correo(request):
 
 @login_required()
 def inicio(request):
-	return render(request, 'inicio.html')
+	#if request.method == "POST":
+		# if 'register_form' in request.POST:
+
+		# 	login_form = LoginForm(request.POST)
+		# 	if login_form.is_valid():
+		# 		LogIn(request, login_form.cleaned_data['usuario'],
+		# 				login_form.cleaned_data['password'])
+		# 		return redirect('/inicio/')
+	#else:
+	cambioClave = CambioClaveForm()
+	return render(request,'inicio.html',{'CambioClaveForm' : cambioClave})
 
 def registro(request):
 	if request.method == "POST":
@@ -68,20 +78,7 @@ def registro(request):
 	return render(request, 'usuario/registro.html', 
 				{'registrar_usuario' : registrar_usuario})
 
-#def condominio(request):
-#	return render(request, 'index.html')
-
 @login_required()
 def logOut(request):
 	logout(request)
 	return redirect('/')
-
-
-
-
-
-
-
-
-
-

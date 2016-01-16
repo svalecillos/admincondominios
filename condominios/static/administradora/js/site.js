@@ -108,13 +108,13 @@
 
       // Tooltip setup
       // =============
-      $(document).tooltip({
+      /*$(document).tooltip({
         selector: '[data-tooltip=true]',
         container: 'body'
       });
 
       $('[data-toggle="tooltip"]').tooltip();
-      $('[data-toggle="popover"]').popover();
+      $('[data-toggle="popover"]').popover();*/
 
       // Fullscreen
       // ==========

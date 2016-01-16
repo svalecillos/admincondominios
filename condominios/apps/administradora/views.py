@@ -5,6 +5,32 @@ from .models import *
 from .forms import *
 from django.core.urlresolvers import reverse, reverse_lazy
 
+# Modificar a CreateView
+
+def registrar_pago(request):
+	# if request.method == "POST":
+	# 	form = RegistrarCondominioForm(request.POST)
+	# 	if form.is_valid():
+	# 		return redirect('/')
+	# else:
+	# 	formulario = RegistrarCondominioForm()
+	# return render(request, 'propietario/registrar_pago.html',{'formulario' : formulario})
+	return render(request, 'propietario/registrar_pago.html')
+
+# Requiere datos de distintos modelos
+
+def historial_movimientos(request):
+	# if request.method == "POST":
+	# 	form = RegistrarCondominioForm(request.POST)
+	# 	if form.is_valid():
+	# 		return redirect('/')
+	# else:
+	# 	formulario = RegistrarCondominioForm()
+	# return render(request, 'condominio.html', 
+	# 			{'formulario' : formulario,
+	# 			'prueba': tuple(TipoEdificacion.objects.all())})
+	return render(request, 'propietario/historial_movimientos.html')
+
 
 class CondominioRegistrarView(CreateView):
 
