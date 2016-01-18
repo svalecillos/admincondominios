@@ -29,7 +29,7 @@ def geo(request, type = None, parent_id = None):
         location_exists = (locations[type][0].objects.count() > 0)
 
     if not location_exists:
-        return HttpResponseBadRequest('Identificador inválido')
+        return HttpResponseBadRequest('Identificador invalido')
 
     data_fields = {
         'estado' : ('id', 'estado'),
