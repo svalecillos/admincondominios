@@ -4,6 +4,7 @@ from apps.usuarios.models import Usuario
 from .models import *
 from .forms import *
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 
 # Modificar a CreateView
 
@@ -32,15 +33,21 @@ def historial_movimientos(request):
 	return render(request, 'propietario/historial_movimientos.html')
 
 
-class CondominioRegistrarView(CreateView):
+class CondominioRegistrarView(SuccessMessageMixin,CreateView):
 
 	form_class = RegistrarCondominioForm
 	template_name = 'condominio/registrar.html'
 	success_url = reverse_lazy('administradora_app:condominioRegistrar')
+	success_message = "Condominio creado con exito"
 
 	def form_valid(self, form):
 		form.instance.creadoPor = Usuario.objects.get(pk=1)
 		return super(CondominioRegistrarView, self).form_valid(form)
+
+	def get_context_data(self,**kwargs):
+		context = super(CondominioRegistrarView, self).get_context_data(**kwargs)
+		return context 
+
 
 def condominio_old(request):
 	if request.method == "POST":
