@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+
+  <!-- Page -->
+  <div class="page animsition">
+    <div class="page-content container-fluid">
+      <div class="row">
+
+
+        <div class="col-md-6">
+          <!-- Panel Wizard Form Container -->
+          <div class="panel" id="exampleWizardFormContainer">
+            <div class="panel-heading">
+              <h3 class="panel-title">Pearls Steps</h3>
+            </div>
+            <div class="panel-body">
+              <!-- Steps -->
+              <div class="pearls row">
+                <div class="pearl current col-xs-4">
+                  <div class="pearl-icon"><i class="icon wb-user" aria-hidden="true"></i></div>
+                  <span class="pearl-title">Condominio</span>
+                </div>
+                <div class="pearl col-xs-4">
+                  <div class="pearl-icon"><i class="icon wb-payment" aria-hidden="true"></i></div>
+                  <span class="pearl-title">Usuarios</span>
+                </div>
+                <div class="pearl col-xs-4">
+                  <div class="pearl-icon"><i class="icon wb-check" aria-hidden="true"></i></div>
+                  <span class="pearl-title">Confirmation</span>
+                </div>
+              </div>
+              <!-- End Steps http://127.0.0.1:8000/administradora/registrar_edificacion/a58385ab678afdedbd-->
+
+              <!-- Wizard Content {% url 'administradora_app:condominioRegistrarGuiado' %}-->
+              <form type="POST" class="wizard-content" id="exampleFormContainer">
+
+                <div class="wizard-pane active" role="tabpanel">
+                  <div class="form-group">
+                  {% csrf_token %}
+                    <label class="control-label" for="condominio">Condominio</label>
+                    {{ form.condominio }}
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="rif">Rif</label>
+                    {{ form.rif }}
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="telefono">telefono</label>
+                    {{ form.telefono }}
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="correo">correo</label>
+                    {{ form.correo }}
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="parroquia">parroquia</label>
+                    {{ form.parroquia }}
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="ciudad">ciudad</label>
+                    {{ form.ciudad }}
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="avenidaCalle">avenidaCalle</label>
+                    {{ form.avenidaCalle }}
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="urbanizacionSector">urbanizacionSector</label>
+                    {{ form.urbanizacionSector }}
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="tipoEdificacion">tipoEdificacion</label>
+                    {{ form.tipoEdificacion }}
+                     <a class="pull-center" target="_blank" href="{% url 'administradora_app:tipoEdificacionRegistrar' popup='a58385ab678afdedbd' %}">Volver</a>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="nombreEdificacion">nombreEdificacion</label>
+                    {{ form.nombreEdificacion }}
+                  </div>
+                </div>
+                <div class="wizard-pane" id="exampleBillingOne" role="tabpanel">
+                  <div class="form-group">
+                    <label class="control-label" for="inputCardNumberOne">Card Number</label>
+                    <input type="text" class="form-control" id="inputCardNumberOne" name="number" placeholder="Card number">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="inputCVVOne">CVV</label>
+                    <input type="text" class="form-control" id="inputCVVOne" name="cvv" placeholder="CVV">
+                  </div>
+                </div>
+                <div class="wizard-pane" id="exampleGettingOne" role="tabpanel">
+                  <div class="text-center margin-vertical-20">
+                    <h4>Please confrim your order.</h4>
+                    <div class="table-responsive">
+                      <table class="table table-hover text-right">
+                        <thead>
+                          <tr>
+                            <th class="text-center">#</th>
+                            <th>Description</th>
+                            <th class="text-right">Quantity</th>
+                            <th class="text-right">Unit Cost</th>
+                            <th class="text-right">Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center">1</td>
+                            <td class="text-left">Server hardware purchase</td>
+                            <td>32</td>
+                            <td>$75</td>
+                            <td>$2152</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">2</td>
+                            <td class="text-left">Office furniture purchase</td>
+                            <td>15</td>
+                            <td>$169</td>
+                            <td>$4169</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">3</td>
+                            <td class="text-left">Company Anual Dinner Catering</td>
+                            <td>69</td>
+                            <td>$49</td>
+                            <td>$1260</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <!-- Wizard Content -->
+            </div>
+          </div>
+          <!-- End Panel Wizard Form Container -->
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <!-- End Page -->
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <span class="site-footer-legal">© 2015 Remark</span>
+    <div class="site-footer-right">
+      Crafted with <i class="red-600 wb wb-heart"></i> by <a href="http://themeforest.net/user/amazingSurge">amazingSurge</a>
+    </div>
+  </footer>
+
+  <!-- Core  -->
+  <script src="/static/vendor/jquery/jquery.js"></script>
+  <script src="/static/vendor/bootstrap/bootstrap.js"></script>
+  <script src="/static/vendor/animsition/jquery.animsition.js"></script>
+  <script src="/static/vendor/asscroll/jquery-asScroll.js"></script>
+  <script src="/static/vendor/mousewheel/jquery.mousewheel.js"></script>
+  <script src="/static/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+  <script src="/static/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+
+  <!-- Plugins -->
+  <script src="/static/vendor/switchery/switchery.min.js"></script>
+  <script src="/static/vendor/intro-js/intro.js"></script>
+  <script src="/static/vendor/screenfull/screenfull.js"></script>
+  <script src="/static/vendor/slidepanel/jquery-slidePanel.js"></script>
+
+  <script src="/static/vendor/formvalidation/formValidation.js"></script>
+  <script src="/static/vendor/formvalidation/framework/bootstrap.js"></script>
+  <script src="/static/vendor/matchheight/jquery.matchHeight-min.js"></script>
+  <script src="/static/vendor/jquery-wizard/jquery-wizard.js"></script>
+
+  <!-- Scripts -->
+  <script src="/static/js/core.js"></script>
+  <script src="/static/js/site.js"></script>
+
+  <script src="/static/js/sections/menu.js"></script>
+  <script src="/static/js/sections/menubar.js"></script>
+  <script src="/static/js/sections/sidebar.js"></script>
+
+  <script src="/static/js/configs/config-colors.js"></script>
+  <script src="/static/js/configs/config-tour.js"></script>
+
+  <script src="/static/js/components/asscrollable.js"></script>
+  <script src="/static/js/components/animsition.js"></script>
+  <script src="/static/js/components/slidepanel.js"></script>
+  <script src="/static/js/components/switchery.js"></script>
+  <script src="/static/js/components/jquery-wizard.js"></script>
+  <script src="/static/js/components/matchheight.js"></script>
+
+  <script>
+    (function(document, window, $) {
+      'use strict';
+
+      var Site = window.Site;
+
+      $(document).ready(function($) {
+        Site.run();
+      });
+
+      // Example Wizard Form
+      // -------------------
+      (function() {
+        // set up formvalidation
+        $('#exampleAccountForm').formValidation({
+          framework: 'bootstrap',
+          fields: {
+            username: {
+              validators: {
+                notEmpty: {
+                  message: 'The username is required'
+                },
+                stringLength: {
+                  min: 6,
+                  max: 30,
+                  message: 'The username must be more than 6 and less than 30 characters long'
+                },
+                regexp: {
+                  regexp: /^[a-zA-Z0-9_\.]+$/,
+                  message: 'The username can only consist of alphabetical, number, dot and underscore'
+                }
+              }
+            },
+            password: {
+              validators: {
+                notEmpty: {
+                  message: 'The password is required'
+                },
+                different: {
+                  field: 'username',
+                  message: 'The password cannot be the same as username'
+                }
+              }
+            }
+          }
+        });
+
+        $("#exampleBillingForm").formValidation({
+          framework: 'bootstrap',
+          fields: {
+            number: {
+              validators: {
+                notEmpty: {
+                  message: 'The credit card number is required'
+                }
+                // creditCard: {
+                //   message: 'The credit card number is not valid'
+                // }
+              }
+            },
+            cvv: {
+              validators: {
+                notEmpty: {
+                  message: 'The CVV number is required'
+                }
+                // cvv: {
+                //   creditCardField: 'number',
+                //   message: 'The CVV number is not valid'
+                // }
+              }
+            }
+          }
+        });
+
+        // init the wizard
+        var defaults = $.components.getDefaults("wizard");
+        var options = $.extend(true, {}, defaults, {
+          buttonsAppendTo: '.panel-body'
+        });
+
+        var wizard = $("#exampleWizardForm").wizard(options).data(
+          'wizard');
+
+        // setup validator
+        // http://formvalidation.io/api/#is-valid
+
+
+      })();
+
+      // Example Wizard Form Container
+      // -----------------------------
+      // http://formvalidation.io/api/#is-valid-container
+      (function() {
+        var defaults = $.components.getDefaults("wizard");
+        var options = $.extend(true, {}, defaults, {
+          onInit: function() {
+            $('#exampleFormContainer').formValidation({
+              framework: 'bootstrap',
+              fields: {
+                condominio: {
+                  validators: {
+                    notEmpty: {
+                      message: 'El nombre del condominio no puede estar en blanco.'
+                    }
+                  }
+                },
+                password: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The password is required'
+                    }
+                  }
+                },
+                number: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The credit card number is not valid'
+                    }
+                  }
+                },
+                cvv: {
+                  validators: {
+                    notEmpty: {
+                      message: 'The CVV number is required'
+                    }
+                  }
+                }
+              }
+            });
+          },
+          validator: function() {
+            var fv = $('#exampleFormContainer').data(
+              'formValidation');
+
+            var $this = $(this);
+
+            // Validate the container
+            fv.validateContainer($this);
+
+            var isValidStep = fv.isValidContainer($this);
+            if (isValidStep === false || isValidStep === null) {
+              return false;
+            }
+
+            return true;
+          },
+          onFinish: function() {
+             $('#exampleFormContainer').submit();
+          },
+          onSuccess: function(e, data) {
+            $('#exampleFormContainer').submit();
+          },          
+          buttonsAppendTo: '.panel-body'
+        });
+
+        $("#exampleWizardFormContainer").wizard(options);
+      })();
+
+
+
+
+
+
+
+    })(document, window, jQuery);
+  </script>
+
+{% endblock contenido%}

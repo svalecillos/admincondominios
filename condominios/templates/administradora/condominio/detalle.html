@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+<div class="page">
+  <div class="page-content">
+<div class="panel">
+      <div class="panel-body container-fluid">
+
+
+        <div class="page-invoice-table table-responsive col-sm-10">
+          <table class="table table-hover table-condensed text-right">
+            <tbody>
+              <tr>
+                <td class="text-center">
+            <span class="c-fact"><b>{{ object.condominio }}</b></span>
+                </td>              
+                <td class="text-rigth" colspan="3">
+                  <b>Rif:</b> {{ object.rif }}
+                </td>
+              </tr>            
+              <tr>
+                <td class="text-left">
+                  <b>Correo electronico:</b> {{ object.correo }}
+                </td>
+                <td class="text-left" colspan="3">
+                  <b>Telefono:</b> {{ object.telefono }}
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  <b>{{ object.tipoEdificacion.edificacion }}:</b> {{ object.avenidaCalle }}
+                </td>
+                <td class="text-left">
+                  <b>{{ object.urbanizacionSector }}:</b> {{ object.urbanizacionSector }}
+                </td>
+                <td class="text-left">
+                  <b>Nombre edificio o casa:</b> {{ object.nombreEdificacion }}
+                </td>                
+              </tr>              
+            </tbody>
+          </table>
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+{% endblock contenido %}
