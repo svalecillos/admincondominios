@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView, ListView
 from apps.usuarios.models import Usuario
 from .models import *
+import base64
 from .forms import *
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponse
 
 # Modificar a CreateView
 
@@ -41,7 +43,7 @@ class CondominioRegistrarView(SuccessMessageMixin,CreateView):
 	success_message = "Condominio creado con exito"
 
 	def form_valid(self, form):
-		form.instance.creadoPor = Usuario.objects.get(pk=1)
+		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
 		return super(CondominioRegistrarView, self).form_valid(form)
 
 	def get_context_data(self,**kwargs):
@@ -60,6 +62,7 @@ def condominio_old(request):
 				{'formulario' : formulario,
 				'prueba': tuple(TipoEdificacion.objects.all())})
 
+
 class ProveedorRegistrarView(CreateView):
 
 	form_class = RegistrarProveedorForm
@@ -67,7 +70,7 @@ class ProveedorRegistrarView(CreateView):
 	success_url = reverse_lazy('administradora_app:proveedorRegistrar')
 
 	def form_valid(self, form):
-		form.instance.creadoPor = Usuario.objects.get(pk=1)
+		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
 		return super(ProveedorRegistrarView, self).form_valid(form)
 
 def proveedor(request):
@@ -122,14 +125,61 @@ class CostoServicioMensualRegistrarView(CreateView):
 		return super(CostoServicioMensualRegistrarView, self).form_valid(form)
 
 
-class CondominioListarView(DetailView):
+class CondominioListarView(ListView):
 
     template_name = 'condominio/listar.html'
-    #model = Condominio
-    def get_queryset(self):
-        return super(Condominio, self).objects.all()
+    model = Condominio
 
     def get_context_data(self, **kwargs):
         context = super(CondominioListarView, self).get_context_data(**kwargs)
-        context['condominios'] = Condominio.objects.all()
-        return context    
+        context['b64id']=base64.b64encode(Condominio.id)
+        return context
+
+class CondominioDetailView(DetailView):
+ 
+    queryset = Condominio.objects.all()
+    template_name = 'condominio/detalle.html'
+ 
+    def get_object(self):
+        # Llamamos a la superclase
+        object = super(CondominioDetailView, self).get_object()
+        # Retornamos el objeto
+        return object
+
+class RegistrarCondominioGuiadoView(CreateView):
+	form_class = RegistrarCondominioForm
+	template_name = 'administrador/registrar_condominio_guiado.html'
+	success_url = reverse_lazy('usuarios_app:index')
+	initial = {'condominio': 'defecto'}
+	def form_valid(self, form):
+		return super(RegistrarCondominioGuiadoView, self).form_valid(form)        
+
+def RegistrarCondominioGuiadoView(request):
+	if request.method == "POST":
+		form_condominio = RegistrarCondominioForm(request.POST)
+		if form_condominio.is_valid():
+			form_condominio.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
+			form_condominio.save()
+			#salvar.save()
+		return redirect('/')
+	else:
+		formulario = RegistrarCondominioForm()
+	return render(request, 'administrador/registrar_condominio_guiado.html', 
+				{'form' : formulario})
+
+
+class RegistrarTipoEdificacionView(CreateView):
+	form_class = RegistrarTipoEdificacionForm
+	template_name = 'administrador/registrar_tipo_edificacion.html'
+	success_url = reverse_lazy('usuarios_app:index')
+
+	def get(self, request,popup):
+		if popup is not None:
+			return render(request, 'administrador/registrar_tipo_edificacion_popup.html', {'form': self.form_class})
+		else:
+			return render(request, self.template_name, {'form': self.form_class})
+
+	def form_valid(self, form):
+		return super(RegistrarTipoEdificacionView, self).form_valid(form)
+
+
