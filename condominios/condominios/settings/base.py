@@ -25,6 +25,7 @@ LOCAL_APPS = (
     'apps.usuarios',
     'apps.venezuela', 
     'apps.administradora',
+    'apps.pagos',
     )
 
 THIRD_PARTY_APPS = (
