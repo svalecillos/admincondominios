@@ -73,63 +73,73 @@ class RegistrarCondominioForm(forms.ModelForm):
 				'type' : 'text',
 				'class' : 'form-control', 
 				'placeholder' : 'Ingresa un nombre de condomino',
-				'id': 'condominio'
+				'id': 'condominio',
+				'required':'required'
 				}),
 			'rif' : forms.TextInput(attrs = 
 				{
 				'type' : 'text',
 				'class' : 'form-control', 
 				'placeholder' : 'Ingresa un rif',
-				'id': 'rif'
+				'id': 'rif',
+				'required':'required'
 				}),
 			'telefono' : forms.TextInput(attrs = 
 				{
 				'class' : 'form-control',
 				'placeholder' : 'Ingresa un telefono de contacto',
-				'id': 'telefono'
+				'id': 'telefono',
+				'required':'required'
 				}),
 			'correo' : forms.TextInput(attrs = 
 				{
 				'type' : 'mail',
 				'class' : 'form-control', 
 				'placeholder' : 'Ingresa un correo',
-				'id': 'correo'
+				'id': 'correo',
+				'required':'required'
 				}),
 			'parroquia': forms.Select(attrs=
 				{
 				'class': 'form-control',
-				'id': 'parroquia'
+				'id': 'parroquia',
+				'required':'required'
 				}),
 			'ciudad': forms.Select(attrs=
 				{
 				'class': 'form-control',
-				'id': 'ciudad'
+				'id': 'ciudad',
+				'required':'required'
 				}),
 			'avenidaCalle' : forms.TextInput(attrs = 
 				{
 				'type' : 'text',
 				'class' : 'form-control', 
 				'placeholder' : 'Ingresa una avenida o calle',
-				'id': 'avenidaCalle'
+				'id': 'avenidaCalle',
+				'required':'required'
 				}),
 			'urbanizacionSector' : forms.TextInput(attrs = 
 				{
 				'type' : 'text',
 				'class' : 'form-control', 
 				'placeholder' : 'Ingresa una urbanizacion o sector',
-				'id': 'urbanizacionSector'
+				'id': 'urbanizacionSector',
+				'required':'required'
 				}),
 			'tipoEdificacion': forms.Select(attrs=
 				{
 				'class': 'form-control',
-				'id': 'tipoedificacion'
+				'id': 'tipoedificacion',
+				'required':'required'
 				}),
 			'nombreEdificacion' : forms.TextInput(attrs = 
 				{
 				'type' : 'text',
 				'class' : 'form-control', 
 				'placeholder' : 'Ingresa el nombre de la edificacion',
-				'id': 'nombreedificacion'
+				'id': 'nombreedificacion',
+				'required':'required'
 				})	
 		}
 
@@ -270,4 +280,16 @@ class CostoServicioMensualRegistrarForm(forms.ModelForm):
 				'placeholder' : 'Ingresa un costo',
 				'id': 'costo'
 				}),
-		}			
+		}
+
+class RegistrarTipoEdificacionForm(forms.ModelForm):
+	class Meta:
+		model = TipoEdificacion
+		fields = ('edificacion',)
+		widgets = {
+			'edificacion': forms.TextInput(attrs=
+				{
+				'class': 'form-control',
+				'id': 'edificacion'
+				}),
+		}					
