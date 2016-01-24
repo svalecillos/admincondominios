@@ -2,6 +2,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block contenido %}
+<div class="page">
+  <div class="page-content">
 {% if messages %}
   {% for message in messages %}
   <p class="alert alert-dismissable {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
@@ -81,6 +83,7 @@
     <select name="municipio" data-query="municipios" data-parent="estado" title="Municipio"></select>
     <select name="parroquia" data-query="parroquias" data-parent="municipio" title="Parroquia"></select>
 </div>
-
+</div>
+</div>
 
 {% endblock contenido %}
