@@ -9,6 +9,11 @@ urlpatterns = patterns('',
 				url(r'^administradora/costoservicioespecial/registrar$', CostoServicioEspecialRegistrarView.as_view(), name='costoServicioEspecialRegistrar'),
 				url(r'^administradora/costoserviciomensual/registrar$', CostoServicioMensualRegistrarView.as_view(), name='costoServicioMensualRegistrar'),
 				url(r'^registrar-pago$', 'apps.administradora.views.registrar_pago', name='registrar_pago'),
-				url(r'^historial-movimientos$', 'apps.administradora.views.historial_movimientos', name='historial_movimientos')
-				#url(r'^administradora/condominio/listar$', CondominioListarView.as_view(), name='condominioListar'),						
+				url(r'^historial-movimientos$', 'apps.administradora.views.historial_movimientos', name='historial_movimientos'),
+				url(r'^condominio-listar$', CondominioListarView.as_view(), name='condominioListar'),						
+				url(r'^condominio/(?P<pk>\d+)/$', CondominioDetailView.as_view(), name='condominioDetalle'),
+				#url(r'^condominio/guiado$', RegistrarCondominioGuiadoView.as_view(), name='condominioRegistrarGuiado'),
+				url(r'^administradora/registrar_edificacion/(?P<popup>\w{0,50})$', RegistrarTipoEdificacionView.as_view(), name='tipoEdificacionRegistrar'),
+				url(r'^condominio/guiado$', 'apps.administradora.views.RegistrarCondominioGuiadoView', name='condominioRegistrarGuiado'),
+				
 	)
