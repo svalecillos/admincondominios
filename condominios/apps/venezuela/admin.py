@@ -7,6 +7,8 @@ admin.site.register(Ciudad)
 admin.site.register(Municipio)
 admin.site.register(PrefijoTelefonico)
 admin.site.register(prefijoCelular)
+admin.site.register(Banco)
+
 
 class ParroquiasAdmin(admin.ModelAdmin):
     list_display = ('parroquia', 'municipio',)
