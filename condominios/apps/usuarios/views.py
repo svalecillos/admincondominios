@@ -3,6 +3,7 @@ from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth.models import *
 from .forms import *
 from .models import Usuario
 from .functions import *
@@ -21,8 +22,7 @@ def index(request):
 		# if 'login_form' in request.POST:
 			login_form = LoginForm(request.POST)
 			if login_form.is_valid():
-				LogIn(request, login_form.cleaned_data['usuario'],
-						login_form.cleaned_data['password'])
+				LogIn(request, login_form.cleaned_data['usuario'],login_form.cleaned_data['password'])
 				return redirect('/inicio/')
 	else:
 		formulario_contacto = Contact_form()
@@ -55,6 +55,9 @@ def inicio(request):
 		# 				login_form.cleaned_data['password'])
 		# 		return redirect('/inicio/')
 	#else:
+	current_user = request.user
+	print ("Prueba user")
+	print (current_user.id)
 	cambioClave = CambioClaveForm()
 	return render(request,'inicio.html',{'CambioClaveForm' : cambioClave})
 
