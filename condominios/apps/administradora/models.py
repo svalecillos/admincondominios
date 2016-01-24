@@ -9,7 +9,7 @@ class TipoEdificacion(models.Model):
 	estatus = models.BooleanField(default=True)
 
 	def __str__(self):
-		return self.edificacion
+		return str(self.edificacion)
 
 	#def __iter__(self):
 	#	return (self.edificacion)
@@ -34,7 +34,7 @@ class Condominio(models.Model):
 
 
 	def __str__(self):
-		return self.condominio
+		return str(self.condominio)
 
 	class Meta:
 		verbose_name_plural = "Condominios"
@@ -49,7 +49,7 @@ class Proveedor(models.Model):
 	creadoPor = models.ForeignKey(Usuario)
 
 	def __str__(self):
-		return self.proveedor
+		return str(self.proveedor)
 
 	class Meta:
 		verbose_name_plural = "Proveedores"
@@ -62,7 +62,7 @@ class ServicioMensual(models.Model):
 	estatus = models.BooleanField(default=True)
 
 	def __str__(self):
-		return self.servicioMensual
+		return str(self.servicioMensual)
 
 	class Meta:
 		verbose_name_plural = "Servicios mensuales"
@@ -75,7 +75,7 @@ class CostoServicioMensual(models.Model):
 	servicioMensual = models.ForeignKey(ServicioMensual)
 
 	def __str__(self):
-		return self.servicioMensual.servicioMensual
+		return str(self.servicioMensual.servicioMensual)
 
 	class Meta:
 		verbose_name_plural = "Costo de servicio mensuales"
@@ -90,7 +90,7 @@ class CargoServicioMensual(models.Model):
 	creadoPor = models.ForeignKey(Usuario)
 
 	def __str__(self):
-		return self.monto
+		return str(self.monto)
 
 	class Meta:
 		verbose_name_plural = "Cargo servicios mensuales"
@@ -103,7 +103,7 @@ class ServicioEspecial(models.Model):
 	estatus = models.BooleanField(default=True)
 
 	def __str__(self):
-		return self.servicioEspecial
+		return str(self.servicioEspecial)
 
 	class Meta:
 		verbose_name_plural = "Servicios especiales"
@@ -117,7 +117,7 @@ class CostoServicioEspecial(models.Model):
 	servicioEspecial = models.ForeignKey(ServicioEspecial)
 
 	def __str__(self):
-		return self.servicoEspecial.servicoEspecial
+		return str(self.servicoEspecial.servicoEspecial)
 
 	class Meta:
 		verbose_name_plural = "Costo de servicios especiales"
@@ -132,7 +132,7 @@ class CargoServicioEspecial(models.Model):
 	creadoPor = models.ForeignKey(Usuario)
 
 	def __str__(self):
-		return self.monto
+		return str(self.monto)
 
 	class Meta:
 		verbose_name_plural = "Cargo servicios especiales"
@@ -144,7 +144,7 @@ class CuentaCondominio(models.Model):
 	fecha = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
-		return self.condominio.condominio
+		return str(self.condominio.condominio)
 
 	class Meta:
 		verbose_name_plural = "Cuenta de condominios"
@@ -156,7 +156,7 @@ class CuentaUsuario(models.Model):
 	fecha = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
-		return self.usuario.nombre + " " + self.usuario.apellido
+		return str(self.usuario.nombre + " " + self.usuario.apellido)
 
 	class Meta:
 		verbose_name_plural = "Cuenta de usuarios"
