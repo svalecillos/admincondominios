@@ -86,13 +86,13 @@
                 <a class="navbar-brand" href="#"><img src="{% static 'frontend/img/logo-top.png' %}" alt="" /></a>
             </div>
 			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav"> 
 					<li class="page-scroll active"><a href="#home">Inicio</a></li>
 					<li class="page-scroll"><a href="#about">La Empresa</a></li>
 					<li class="page-scroll"><a href="#features">Servicios</a></li>
 					<!--<li class="page-scroll"><a href="#gallery">Galeria</a></li>-->
 					<li class="page-scroll"><a href="#pricing">Enlaces de Interés</a></li>
-					<li class="page-scroll"><a href="#team">Equipo</a></li>
+					<!--<li class="page-scroll"><a href="#team">Equipo</a></li>-->
 					<!--<li class="page-scroll"><a href="#blog">Blog</a></li>-->
 					<li class="page-scroll"><a href="#contact">Contacto</a></li>
 				</ul>
@@ -113,18 +113,16 @@
 					<p>
 					Ingresa en nuestro sistema de administracion de condominio
 					</p>
-                    <h2><p>Inicio de Sesion</p></h2>
+                    <h2 align="center">INICIO DE SESION</h2>
 					<form method="post" class="form-horizontal">{% csrf_token %}
 						<div class="form-group">
 							<div class="col-lg-12">
-								<label>Usuario:</label>
 								{{ login_form.usuario }}
                                 {{ login_form.usuario.errors }}
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-lg-12">
-								<label>Clave:</label>
 								{{ login_form.password }}
                                 {{ login_form.password.errors }}
 							</div>
@@ -164,9 +162,9 @@
                         <!-- Start Navigation Tab -->
                         <div class="tabbed_navigation">
                           <ul>
-                            <li class="active">Que Hacemos</li>   
-							<li>Quienes Somos</li>							
-                            <li>Como Funciona</li>
+                            <li class="active">¿Quiénes Somos?</li>   
+							<li>Misión</li>							
+                            <li>Visión</li>
                           </ul>      
                         </div>
                         <!-- End Navigation Tab -->
@@ -174,10 +172,9 @@
                         <div class="slides"> 
                             <!-- Start Slide 01 -->
                             <div class="slide">
-                                <p>
-                                Saepe malorum appareat ad duo. Dicat tamquam aliquando has ut constituam temporibus qui an. No qui nominati salutandi, mei ne malis dicit vivendo. Ut his vidit verterem complectitur duo ut adversarium intellegebat, qui propriae liberavisse te. Pri alii percipit definiebas et. Aliquip ceteros percipitur cum eu.
+                                <p align="justify">
+                                <strong>Administradora JJ24-30.C.A.</strong> Es la empresa que se encarga a través del desempeño de sus colaboradores de mantener un alto nivel de calidad de vida en los condominios, y centros comerciales, así como de fomentar y apoyar el desarrollo integral de éstos, por medio de una administración organizada y eficiente de manera estructurada. Nuestra organización cuenta con un personal altamente calificado, conformado por profesionales (Economistas, abogados, contadores públicos y trabajadores sociales) egresados de las universidades más prestigiosas del país, esta multidisciplinariedad brinda un alto nivel de precisión en la administración de sus bienes del modo más eficiente y productivo, bajo la firme convicción de que el buen desempeño de nuestras funciones lograrán elevar el nivel de calidad de vida.
                                 </p>
-                                <p></p>
                                 <!-- Start Services -->
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 box-icon">
@@ -214,25 +211,26 @@
                             <!-- End Slide 01 -->
                             <!-- Start Slide 02 -->
                             <div class="slide">
-								<p>
-								Consetetur id sed alia invidunt usu cu. Vim purto percipit menandri no. Sit ocurreret vituperatoribus an. Nobis referrentur sit te, has quis dictas discere et. Natum utamur habemus nam cu, vim novum sonet ceteros id.
+								<p align="justify">
+								Ofrecer a nuestros aliados el más elevado servicio de administración y asesoramiento, que permita consolidar el mayor bienestar posible a través de la optimización de los recursos disponibles.
 								</p>
 								<blockquote>
 									<p>
 									His in labores deserunt concludaturque. Vix in mucius aliquip tractatos, vix cu munere legere verear. Pertinax partiendo maiestatis sit id sea eirmod.
 									</p>
 								</blockquote>
-								<p>
-								Pertinax partiendo maiestatis sit id, sea eirmod appellantur reprehendunt cu. Has putant vituperata ei, ullum alienum ei vis. Mei lorem atomorum no, sed aeque commodo minimum an, ut mel porro salutatus tincidunt.
-								</p>
-								<p><a href="#" class="btn btn-bavel btn-primary">Get started with us</a> <a href="#" class="btn btn-bavel btn-secondary">View our features</a></p>
                             </div>   
                             <!-- End Slide 02 -->
                             <!-- Start Slide 03 -->
                             <div class="slide">
-                                <p>
-                                Fabulas detraxit mei no, sea facete appellantur interpretaris cu. Ea per deseruisse quaerendum. Debet principes an vis. Porro debitis adversarium ne pri, alia decore placerat cu duo. Nobis referrentur sit te, has quis dictas discere et.
+                                <p align="justify">
+                                Ser la empresa líder en la prestación de servicios de administración y asesoramiento. Asimismo, permitir el desarrollo integral de nuestros aliados, las comunidades y el de la organización bajo el siguiente esquema:
+                            <br>
+                                  En donde los aliados son aquellos condominios y demás organizaciones a los cuales se encuentran destinados nuestros servicios. Las comunidades son la base fundamental de la sociedad, son el conjunto de individuos que comparten elementos en común.
+
                                 </p>
+
+
 								<ul class="list-unstyled">
 									<li>
 										 <span class="icon icon-download icon-3x icon-primary alignleft"></span>
@@ -282,23 +280,11 @@
         <div class="container">
             <!-- Start title --> 
             <div class="title-section">
-                <h3>Why Choose Us <strong>Features</strong></h3>
+                <h3>¿Por qué Nosotros? <strong>Servicios</strong></h3>
             </div>
             <!-- End title -->
             <div class="row">
-                <div class="col-md-6">
-                    <!-- Start Background Content -->
-                    <div class="bg-content">
-                        <div class="content">
-                            <h4>Get it today <b>We are you waiting for</b></h4>
-                            <p>
-                            Eu vivendum leifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto appareat cu mel, vel id quodsi mediocrem urbanitas.
-                            </p>
-                            <a href="#" class="btn btn-primary btn-bavel btn-lg btn-x-lg">Join with us <i class="icon-arrow-right2"></i></a>
-                        </div>
-                    </div>
-                    <!-- End Background Content -->
-                </div>
+
                 <div class="col-md-6">
                     <!-- Start Accordion -->
                     <div class="panel-group" id="accordion">
@@ -307,13 +293,14 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <span class="icon icon-adjustments icon-primary"></span>
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Easy To Setting</a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">¿Qué ofrecemos?</a>
                                 </h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <p>
-                                    Harum tibique ancillae quo no, erat fierent per ut. Diam tibique qui eu, per dolore eripuit an. Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                                    <p align="justify">
+                                    <strong>Administradorajj24-30ca,</strong> presenta para nuestros aliados una renovada estructura en la atención de las necesidades condominiales, por medio del  abordaje holístico  de cada realidad.
+                                    Nos enfocamos en suministrar  respuestas a tus inquietudes, vamos más allá de la simple emisión y envío de las planillas de pago mensuales, nuestro trato se caracteriza por la atención minuciosa acerca del tema planteado.
                                     </p>
                                 </div>
                             </div>
@@ -323,14 +310,20 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <span class="icon icon-mobile icon-tertiary"></span>
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#mobile">Responsive Design</a>
+                                    <span class="icon icon-library icon-tertiary"></span>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#mobile">En lo Jurídico</a>
                                 </h4>
                             </div>
                             <div id="mobile" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>
-                                    Harum tibique ancillae quo no, erat fierent per ut. Diam tibique qui eu, per dolore eripuit an. Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                                    <p align="justify">
+                                    <strong>Asesorías y acompañamiento:</strong>
+                                    <ul>
+                                        <li>En la implementación de reglamento interno de convivencia, lo cual establece lineamientos en el comportamiento de tus vecinos con el entorno condominial.</li>
+                                        <li>En la elaboración de normas según área común.</li>
+                                        <li>De un plan de trabajo que disminuye la mora y trabaja hasta erradicarla.</li>
+                                        <li>Y en general asesorías propias de la trama condominial.</li>
+                                    <ul>
                                     </p>
                                 </div>
                             </div>
@@ -340,14 +333,20 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <span class="icon icon-beaker icon-secondary"></span>
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#beaker">Clean and Modern</a>
+                                    <span class="icon icon-office icon-secondary"></span>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#beaker">En lo Adminitrativo</a>
                                 </h4>
                             </div>
                             <div id="beaker" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>
-                                    Harum tibique ancillae quo no, erat fierent per ut. Diam tibique qui eu, per dolore eripuit an. Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                                    <p align="justify">
+                                    <ul>
+                                        <li>Administración del condominio.</li>
+                                        <li>Emitimos y enviamos las planillas de pagos mensuales.</li>
+                                        <li>A través de nuestra web, y por medio de usuario y clave de acceso,  podrás visualizar las planillas de pago, estados de cuentas por pagar, cuentas por cobrar, así como el balance general.</li>
+                                        <li>Gestionamos contratación de  proveedores.</li>
+                                        <li>Te ofrecemos el “Módulo de Autogestión Administrativo” que te permitirá administrar tu condominio sin intermediarios.</li>
+                                    </ul>
                                     </p>
                                 </div>
                             </div>
@@ -357,14 +356,16 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <span class="icon icon-display icon-quaternary"></span>
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#browser">Cross Browser</a>
+                                    <span class="icon icon-pushpin icon-quaternary"></span>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#browser">En lo económico y social</a>
                                 </h4>
                             </div>
                             <div id="browser" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>
-                                    Harum tibique ancillae quo no, erat fierent per ut. Diam tibique qui eu, per dolore eripuit an. Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
+                                    <p >
+                                    <ul align="justify">
+                                        <li>Nos adaptamos a la realidad cambiante, económica, y social del país, y su implicación en el entorno condominial  a través del análisis constante del mismo, de esa coyuntura innovamos para garantizar las acciones oportunas, dando respuestas a las necesidades.</li>
+                                    </ul>
                                     </p>
                                 </div>
                             </div>
@@ -381,12 +382,12 @@
     <div class="clearfix"></div>
       
     <!-- Start Testimonial -->  
-    <section class="parallax bg-testimonial" data-background="img/parallax/1.jpg" data-speed="0.4">
+    <section id="pricing" class="parallax bg-testimonial" data-background="img/parallax/1.jpg" data-speed="0.4">
         <div class="overlay"></div>
         <div class="container">
             <!-- Start title --> 
             <div class="title-section small">
-                <h4>People Said About Sono <strong>Testimonilas</strong></h4>
+                <h4>Enlace de interés</h4>
             </div>
             <!-- End title -->
             <div class="row">
@@ -396,14 +397,13 @@
 					  <!-- Start testimoni 1 -->
                       <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/1.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                An simul suscipit dissentiet sit nam harum constituto vis dolore tempor neglegentur ne.   
-                                </p>    
-                                <footer>Sakonnah - <a href="#">Bemlong corp</a></footer>
+                                <p>Código Comercio</p>
+                                <p></p>        
+                                <footer><a target="_blank" href="http://www.wipo.int/edocs/lexdocs/laws/es/ve/ve029es.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
@@ -412,14 +412,13 @@
 					   <!-- Start testimoni 2 -->
                       <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/2.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                Pri alii percipit definiebas et. Aliquip ceteros percipitur cum eu, pri id dicunt instructior. Labitur epicuri.   
-                                </p>    
-                                <footer>Sukkim - <a href="#">Morti corp</a></footer>
+                                <p>Ley de arrendamientos inmobiliarios</p>
+                                <p></p>          
+                                <footer><a target="_blank" href="http://www.psuv.org.ve/wp-content/uploads/2011/02/Anteproyecto-de-Ley-para-la-Regularizaci%C3%B3n-y-Control-de-los-Arrendamientos.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
@@ -428,114 +427,131 @@
 					   <!-- Start testimoni 3 -->
                       <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/3.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                Dicat tamquam aliquando has  cibo constituam temporibus qui an qui nominati salutandi, mei ne maliso ut.  
-                                </p>    
-                                <footer>Juwariah - <a href="#">Belekok corp</a></footer>
+                                <p>Ley de Propiedad Horizontal</p>
+                                <p></p>     
+                                <footer><a target="_blank" href="http://www.obelisco.com.ve/publicaciones/noticias/LeyDePropiedadHorizontal.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
 					  <!-- End testimoni 3 -->
 					  
 					  <!-- Start testimoni 4 -->
-                      <div class="item-testimonial">
+                    <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/4.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                Fabulas detraxit mei no, sea facete appellantur interpretaris cu. Ea per deseruisse quaerendum debet vis.
-                                </p>    
-                                <footer>Sukkiem - <a href="#">Kimpot corp</a></footer>
+                                <p>Ley Orgánica del Trabajo, los Trabajadores y Trabajadoras</p>
+                                <p></p>          
+                                <footer><a target="_blank" href="http://rrhh.unefm.edu.ve/descargar/LOTT.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
 					   <!-- End testimoni 4 -->
 					   
 					   <!-- Start testimoni 5 -->
-                      <div class="item-testimonial">
+                    <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/5.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                His in labores deserunt concludaturque. Vix in mucius aliquip tractatos, vix cu munere legere pertinax parti.
-                                </p>    
-                                <footer>Tarmizzi - <a href="#">TRXT corp</a></footer>
+                                <p>Ley Orgánica de prevención, Condiciones y Medios Ambiente de Trabajo</p>        
+                                <footer><a target="_blank" href="http://www.inpsasel.gob.ve/moo_doc/lopcymat.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
 					   <!-- End testimoni 5 -->
 					   
 					   <!-- Start testimoni 6 -->
-                      <div class="item-testimonial">
+                    <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/6.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                Suscipit vulputate usu an, cu cum possit placerat. Iudico blandit sapientem ex per, ut diam dicit qui partiendo.
-                                </p>    
-                                <footer>Pakumis - <a href="#">Mista corp</a></footer>
+                                <p>Ordenanza de convivencia Ciudadana y Sanción de infracciones Menores</p>        
+                                <footer><a target="_blank" href="http://www.alcaldiadeiribarren.com.ve/archivos/ordenanzas/1672_ord_convivencia_ciudadana.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
 					  <!-- End testimoni 6 -->
 					  
 					  <!-- Start testimoni 7 -->
-                      <div class="item-testimonial">
+                    <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/7.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                it et tale dicat mazim, ipsum ceteros eu sed, mel ne euismod pertinax tincidunt quo eu animal
-                                </p>    
-                                <footer>Ecih sukaesih - <a href="#">Ecih corp</a></footer>
+                                <p>Ley de Protección al Deudor Hipotecario de Vivienda</p>        
+                                <footer><a target="_blank" href="http://www.derechos.org.ve/pw/wp-content/uploads/ley_deudor.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
 					   <!-- End testimoni 7 -->
 					   
 					   <!-- Start testimoni 8 -->
-                      <div class="item-testimonial">
+                     <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/8.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                Zril consetetur id sed, alia invidunt usu cu. Vim purto percipit menandri no sit ocurreret. 
-                                </p>    
-                                <footer>Ennok - <a href="#">BOB corp</a></footer>
+                                <p>Ley del Régimen Prestacional de Vivienda y Hábitat</p>        
+                                <footer><a target="_blank" href="http://images.eluniversal.com//2008/08/04/leyh24.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
 					   <!-- End testimoni 8 -->
 					   
 					   <!-- Start testimoni 9 -->
-                      <div class="item-testimonial">
+                     <div class="item-testimonial">
                         <div class="avatar">
-                            <img src="img/testimonial/9.jpg" class="img-responsive" alt="">
+                             <span class="icon-3x icon-hammer2"></span>
                         </div>
                         <div class="content">
                             <blockquote>
-                                <p>
-                                Pertinax partiendo maiestatis sit id, sea eirmod appellantur reprehendunt cu has putant vituperata.
-                                </p>    
-                                <footer>Taklid - <a href="#">Lidun corp</a></footer>
+                                <p>Ley Contra el Desalojo y Desocupación Arbitraria de Viviendas</p>        
+                                <footer><a target="_blank" href="http://www.mp.gob.ve/c/document_library/get_file?p_l_id=40513&folderId=310193&name=DLFE-2427.pdf">Ver más</a></footer>
                             </blockquote>
                         </div>
                       </div>
 					  <!-- End testimoni 9 -->
+
+                       <!-- Start testimoni 10 -->
+                     <div class="item-testimonial">
+                        <div class="avatar">
+                             <span class="icon-3x icon-hammer2"></span>
+                        </div>
+                        <div class="content">
+                            <blockquote>
+                                <p>Ley de Ordenación Urbanística</p>
+                                <p></p>    
+                                <footer><a target="_blank" href="http://www.ucv.ve/fileadmin/user_upload/auditoria_interna/Archivos/Material_de_Descarga/Ley_Organica_de_Ordenacion_Urbanistica_-_33.868.pdf">Ver más</a></footer>
+                            </blockquote>
+                        </div>
+                      </div>
+                      <!-- End testimoni 10 -->
+
+                       <!-- Start testimoni 11 -->
+                     <div class="item-testimonial">
+                        <div class="avatar">
+                             <span class="icon-3x icon-hammer2"></span>
+                        </div>
+                        <div class="content">
+                            <blockquote>
+                                <p>Reglamento de la Ley para la Regularización y Control de Arrendamientos de Viviendas</p>
+                                <footer><a target="_blank" href="http://www.obelisco.com.ve/publicaciones/noticias/REGLAMENTO_LEY_ARRENDAMIENTOS_VIVIENDAS.pdf">Ver más</a></footer>
+                            </blockquote>
+                        </div>
+                      </div>
+                      <!-- End testimoni 11 -->
                     </div>
                     <!-- End Testimonial item -->
                 </div>
@@ -543,332 +559,6 @@
         </div>
     </section>  
     <!-- End Testimonial -->
-      
-    <div class="clearfix"></div>
-      
-    <!-- Start Gallery -->
-    <section id="gallery" class="gallery">
-        <!-- Start title --> 
-        <div class="title-section">
-            <h3>Prooduct Screenshot <strong>Gallery</strong></h3>
-        </div>
-        <!-- End title -->
-        <!-- Start gallery filter  -->
-        <ul class="filter-items">
-            <li data-filter="" class="active"><span>All</span></li>
-            <li data-filter="web"><span>Web</span></li>
-            <li data-filter="graphic"><span>Graphic</span></li>
-            <li data-filter="logo"><span>Logo</span></li>
-            <li data-filter="photos"><span>Photos</span></li>
-        </ul>
-        <!-- End gallery filter -->
-        <!-- Start Gallery -->
-        <div id="masonry" class="masonry">
-            <div class="grid-sizer col-md-3 col-sm-4 col-xs-6"></div>
-            <div data-filter="web" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
-                <div class="dh-overlay">
-                    <div class="option">
-                        <a href="img/gallery/1.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
-                        <h5>
-                            <a href="portfolio-detail.html" class="title">Amquam Tractatos</a>
-                            <a href="#" class="category">Web Design</a>
-                        </h5>
-                    </div>
-                </div>
-                <img src="img/gallery/1.jpg" class="img-responsive" alt="">
-            </div>
-            <div data-filter="graphic" class="grid-item col-md-6 col-sm-4 col-xs-6 img-hover">
-                <div class="dh-overlay">
-                    <div class="option">
-                        <a href="img/gallery/2.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
-                        <h5>
-                            <a href="portfolio-detail.html" class="title">Lorem Ipsum</a>
-                            <a href="#" class="category">Design Grafic</a>
-                        </h5>
-                    </div>
-                </div>
-                <img src="img/gallery/2.jpg" class="img-responsive" alt="">
-            </div>
-            <div data-filter="logo" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
-                <div class="dh-overlay">
-                    <div class="option">
-                        <a href="img/gallery/3.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
-                        <h5>
-                            <a href="portfolio-detail.html" class="title">Jengkol Atah</a>
-                            <a href="#" class="category">Logo Design</a>
-                        </h5>
-                    </div>
-                </div>
-                <img src="img/gallery/3.jpg" class="img-responsive" alt="">
-            </div>
-            <div data-filter="photos" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
-                <div class="dh-overlay">
-                    <div class="option">
-                        <a href="img/gallery/6.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
-                        <h5>
-                            <a href="portfolio-detail.html" class="title">Amquam Tractatos</a>
-                            <a href="#" class="category">Web Design</a>
-                        </h5>
-                    </div>
-                </div>
-                <img src="img/gallery/6.jpg" class="img-responsive" alt="">
-            </div>
-            <div data-filter="web" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
-                <div class="dh-overlay">
-                    <div class="option">
-                        <a href="img/gallery/5.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
-                        <h5>
-                            <a href="portfolio-detail.html" class="title">Omet Tialit</a>
-                            <a href="#" class="category">Web Development</a>
-                        </h5>
-                    </div>
-                </div>
-                <img src="img/gallery/5.jpg" class="img-responsive" alt="">
-            </div>
-            <div data-filter="graphic" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
-                <div class="dh-overlay">
-                    <div class="option">
-                        <a href="img/gallery/4.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
-                        <h5>
-                            <a href="portfolio-detail.html" class="title">Lorem Tempe</a>
-                            <a href="#" class="category">Design Graphic</a>
-                        </h5>
-                    </div>
-                </div>
-                <img src="img/gallery/4.jpg" class="img-responsive" alt="">
-            </div>
-            <div data-filter="graphic" class="grid-item col-md-3 col-sm-4 col-xs-6 img-hover">
-                <div class="dh-overlay">
-                    <div class="option">
-                        <a href="img/gallery/7.jpg" class="zoom" data-pretty="prettyPhoto"><span class="icon icon-magnifying-glass"></span></a>
-                        <h5>
-                            <a href="portfolio-detail.html" class="title">Robot Jadul</a>
-                            <a href="#" class="category">Design Graphic</a>
-                        </h5>
-                    </div>
-                </div>
-                <img src="img/gallery/7.jpg" class="img-responsive" alt="">
-            </div>
-        </div>
-        <!-- End Gallery -->
-    </section>  
-    <!-- Start Gallery --> 
-    
-    <div class="clearfix"></div>
-    
-    <!-- Start Pricing -->  
-    <section id="pricing">
-        <div class="container">
-            <!-- Start title --> 
-            <div class="title-section">
-                <h3>Download Package <strong>Pricing</strong></h3>
-            </div>
-            <!-- End title -->
-            <!-- Start Pricing Table -->
-            <div class="row">
-                <div class="col-md-3">
-                    <!-- Start Pricing Default -->
-                    <div class="pricing-table">
-                        <div class="pricing-header">
-                            <h4>$<span class="price">0</span><span class="mon">/mon</span></h4>
-                        </div>
-                        <div class="pricing-title">
-                            <h5>Free</h5>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><b>GPL</b> Licence</li>
-                                <li><b>No</b> PSD</li>
-                                <li><b>Personal</b> Use</li>
-                                <li><b>no</b> Support</li>
-                                <li>Documentation</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="#" class="btn btn-default btn-bavel">Get it now</a>
-                        </div>
-                    </div>    
-                    <!-- End Pricing Default -->
-                </div>
-                <div class="col-md-3">
-                    <!-- Start Pricing Primary -->
-                    <div class="pricing-table primary">
-                        <div class="pricing-header">
-                            <h4>$<span class="price">14</span><span class="mon">/mon</span></h4>
-                        </div>
-                        <div class="pricing-title">
-                            <h5>Personal</h5>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><b>Single</b> Licence</li>
-                                <li><b>Free</b> PSD</li>
-                                <li><b>Personal</b> Use</li>
-                                <li><b>24/7</b> Support</li>
-                                <li>Documentation</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="#" class="btn btn-primary btn-bavel">Get it now</a>
-                        </div>
-                    </div>    
-                    <!-- End Pricing Primary -->
-                </div>
-                <div class="col-md-3">
-                    <!-- Start Pricing Secondary -->
-                    <div class="pricing-table secondary">
-                        <div class="pricing-header">
-                            <h4>$<span class="price">24</span><span class="mon">/mon</span></h4>
-                        </div>
-                        <div class="pricing-title">
-                            <h5>Team</h5>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><b>Single</b> Licence</li>
-                                <li><b>Free</b> PSD</li>
-                                <li><b>Commercial</b> Use</li>
-                                <li><b>24/7</b> Support</li>
-                                <li>Documentation</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="#" class="btn btn-secondary btn-bavel">Get it now</a>
-                        </div>
-                    </div>    
-                    <!-- End Pricing Secondary -->
-                </div>
-                <div class="col-md-3">
-                    <!-- Start Pricing Tertiary -->
-                    <div class="pricing-table tertiary">
-                        <div class="pricing-header">
-                            <h4>$<span class="price">32</span><span class="mon">/mon</span></h4>
-                        </div>
-                        <div class="pricing-title">
-                            <h5>Business</h5>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><b>Multi</b> Licence</li>
-                                <li><b>Free</b> PSD</li>
-                                <li><b>Commercial</b> Use</li>
-                                <li><b>24/7</b> Support</li>
-                                <li>Documentation</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="#" class="btn btn-tertiary btn-bavel">Get it now</a>
-                        </div>
-                    </div>    
-                    <!-- End Pricing Tertiary -->
-                </div>
-            </div>    
-            <!-- End Pricing Table -->
-        </div>
-    </section>  
-    <!-- End Pricing -->  
-      
-    <div class="clearfix"></div>
-    
-    <!-- Start Team -->  
-    <section id="team" class="gray">
-         <div class="container">
-            <!-- Start title --> 
-            <div class="title-section">
-                <h3>Profile Behind Sonno <strong>Our Team</strong></h3>
-            </div>
-            <!-- End title -->
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Start Direction -->
-                    <div class="direction">
-                        <div class="direction-nav">
-                            <span class="direct-prev prev-team"><i class="icon-arrow-left2"></i></span>
-                            <span class="direct-next next-team"><i class="icon-arrow-right2"></i></span>
-                        </div>    
-                    </div>     
-                    <!-- End Direction -->
-                    <!-- Start Team Item -->
-                    <div id="team-list" class="owl-carousel owl-theme team-list">
-                        <div class="team-item primary">
-                            <img src="img/team/1.jpg" alt="">
-                            <div class="caption">
-                                <h5><b>Ipah</b> saripah</h5>
-                                <h6>Founder</h6>
-                                <ul>
-                                    <li><a href="#"><span class="icon icon-facebook"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-item secondary">
-                            <img src="img/team/2.jpg" alt="">
-                            <div class="caption">
-                                <h5><b>Aceng</b> Kosasih</h5>
-                                <h6>Manager</h6>
-                                <ul>
-                                    <li><a href="#"><span class="icon icon-facebook"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-item tertiary">
-                            <img src="img/team/3.jpg" alt="">
-                            <div class="caption">
-                                <h5><b>Oneng</b> Alit</h5>
-                                <h6>Marketing</h6>
-                                <ul>
-                                    <li><a href="#"><span class="icon icon-facebook"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-item quaternary">
-                            <img src="img/team/4.jpg" alt="">
-                            <div class="caption">
-                                <h5><b>Ade</b> sunarya</h5>
-                                <h6>Designer</h6>
-                                <ul>
-                                    <li><a href="#"><span class="icon icon-facebook"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-item primary">
-                            <img src="img/team/5.jpg" alt="">
-                            <div class="caption">
-                                <h5><b>Neng</b> nengsih</h5>
-                                <h6>Designer</h6>
-                                <ul>
-                                    <li><a href="#"><span class="icon icon-facebook"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-item secondary">
-                            <img src="img/team/6.jpg" alt="">
-                            <div class="caption">
-                                <h5><b>Ajat</b> sudrajat</h5>
-                                <h6>Designer</h6>
-                                <ul>
-                                    <li><a href="#"><span class="icon icon-facebook"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-tumblr"></span></a></li>
-                                    <li><a href="#"><span class="icon icon-linkedin"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Team Item -->
-                </div>
-            </div>
-        </div>   
-    </section>  
-    <!-- End Team -->
     
     <div class="clearfix"></div>
       
@@ -887,123 +577,6 @@
         </div>
     </div>
     <!-- End Twitter -->
-    
-    <div class="clearfix"></div>
-      
-    <!-- Start Blog -->
-    <section id="blog">
-        <div class="container">
-            <!-- Start title --> 
-            <div class="title-section">
-                <h3>Recent News & Article <strong>Our Blog</strong></h3>
-            </div>
-            <!-- End title -->
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Start Direction -->
-                    <div class="direction">
-                        <div class="direction-nav">
-                            <span class="direct-prev prev-blog"><i class="icon-arrow-left2"></i></span>
-                            <span class="direct-next next-blog"><i class="icon-arrow-right2"></i></span>
-                        </div>    
-                    </div>     
-                    <!-- End Direction -->
-                    <!-- Start Blog Item -->
-                    <div id="post" class="owl-carousel owl-theme post">
-                        <!-- Start Post 01 -->
-                        <div class="post-item primary">
-                            <div class="post-meta">
-                                <div class="date">28</div>
-                                <div class="month">August</div>
-                                <div class="comment">
-                                    <a href="#"><span class="icon icon-chat"></span> 4 Comments</a>
-                                </div>
-                            </div>
-                            <div class="post-image">
-                                <a href="#"><img src="img/blog/1.jpg" class="img-responsive" alt=""></a>
-                            </div>
-                            <div class="post-article">
-                                <h5 class="post-title"><a href="#">Harum tibique ancillae quo no</a></h5>
-                                <p>
-                                    Nam quis ferri theophrastus id. Eu vivendum eleifend eam, id mei velit scripserit, his alterum euripidis reprimique ei. Vis dolore tempor neglegentur ne. Nec dolor perfecto ne appareat cu mel, vel id quodsi mediocrem urbanitas.
-                                </p>
-                            </div>
-                            <a href="#" class="btn btn-primary btn-bavel">Read More</a>
-                        </div>
-                        <!-- End Post 01 -->
-						
-                        <!-- Start Post 02 -->
-                        <div class="post-item secondary">
-                            <div class="post-meta">
-                                <div class="date">24</div>
-                                <div class="month">August</div>
-                                <div class="comment">
-                                    <a href="#"><span class="icon icon-chat"></span> 2 Comments</a>
-                                </div>
-                            </div>
-                            <div class="post-image">
-                                <a href="#"><img src="img/blog/2.jpg" class="img-responsive" alt=""></a>
-                            </div>
-                            <div class="post-article">
-                                <h5 class="post-title"><a href="#">Suscipit vulputate usu an cum</a></h5>
-                                <p>
-                                    Pertinax partiendo maiestatis sit id, sea eirmod appellantur reprehendunt cu. Has putant vituperata ei, ullum alienum ei vis. Mei lorem atomorum no, sed aeque commodo minimum an, ut mel porro salutatus tincidunt  alia decore.
-                                </p>
-                            </div>
-                            <a href="#" class="btn btn-secondary btn-bavel">Read More</a>
-                        </div>
-                        <!-- End Post 02 -->
-						
-                        <!-- Start Post 03 -->
-                        <div class="post-item tertiary">
-                            <div class="post-meta">
-                                <div class="date">22</div>
-                                <div class="month">August</div>
-                                <div class="comment">
-                                    <a href="#"><span class="icon icon-chat"></span> 0 Comments</a>
-                                </div>
-                            </div>
-                            <div class="post-image">
-                                <a href="#"><img src="img/blog/3.jpg" class="img-responsive" alt=""></a>
-                            </div>
-                            <div class="post-article">
-                                <h5 class="post-title"><a href="#">orro debitis adversarium ne pri</a></h5>
-                                <p>
-                                    Sit et tale dicat mazim, ipsum ceteros eu sed, mel ne euismod pertinax tincidunt. Quo eu animal minimum accumsan, ne eros probo aeque vis. Suscipit vulputate usu an, cu cum possit placerat. Iudico blandit sapientem ex per diam.
-                                </p>
-                            </div>
-                            <a href="#" class="btn btn-tertiary btn-bavel">Read More</a>
-                        </div>
-                        <!-- End Post 03 -->
-						
-                        <!-- Start Post 04 -->
-                        <div class="post-item quaternary">
-                            <div class="post-meta">
-                                <div class="date">20</div>
-                                <div class="month">August</div>
-                                <div class="comment">
-                                    <a href="#"><span class="icon icon-chat"></span> 1 Comments</a>
-                                </div>
-                            </div>
-                            <div class="post-image">
-                                <a href="#"><img src="img/blog/4.jpg" class="img-responsive" alt=""></a>
-                            </div>
-                            <div class="post-article">
-                                <h5 class="post-title"><a href="#">Altera delicata inimicus sit in et</a></h5>
-                                <p>
-                                    His ea discere minimum legendos. Virtute nonumes quaestio an mei, ipsum consul in est. Democritum mnesarchum necessitatibus vis cu, dicta commodo iracundia eos ut. Labore labitur fierent no sit Ad prima dolores his.
-                                </p>
-                            </div>
-                            <a href="#" class="btn btn-quaternary btn-bavel">Read More</a>
-                        </div>
-                        <!-- End Post 04 -->
-                    </div>
-                    <!-- End Blog Item -->
-                </div>
-            </div>
-        </div>    
-    </section>      
-    <!-- End Blog -->  
     
     <div class="clearfix"></div>
       
