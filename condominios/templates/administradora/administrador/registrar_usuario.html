@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<div class="page">
+  <div class="page-content">
+    {% if messages %}
+    {% for message in messages %}
+    <p class="alert alert-dismissable {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ message }}
+    </p>
+    {% endfor %}
+    {% endif %}
+      <div class="page-content vertical-align-middle">
+      <div class="brand">
+        <h2 class="brand-text">Registrar usuario para el sistema</h2>
+      </div>
+        <div class="form-group">     
+      <form method="POST" role="form">{% csrf_token %}     
+        <div class="form-group">
+          {{ form.nombre }}
+          {{ form.nombre.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.apellido }}
+          {{ form.apellido.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.cedula }}
+          {{ form.cedula.errors }}
+        </div>  
+        <button type="submit" class="btn btn-primary btn-block">Pre-registrar usuario</button>
+      </form>
+      <div class="form-group clearfix">          
+          <a class="pull-center" href="{% url 'usuarios_app:inicio' %}">Volver</a>
+      </div>
+    </div>
+{{ form.errors }}
+</div></div>
+
+
+
+{% endblock contenido %}

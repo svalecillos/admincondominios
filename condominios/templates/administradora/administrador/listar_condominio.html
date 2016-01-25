@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+<div class="page animsition">
+  <div class="page-content">
+          <div class="panel">
+            <header class="panel-heading">
+              <h3 class="panel-title">Condominios</h3>
+            </header>
+            <div class="panel-body">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Nombre del condominio</th>
+                            <th>Rif</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for condominio in object_list %}
+                        <tr>
+                          <td colspan="2"><a href="condominio/{{ condominio.id }}" data-rel="external">{{ condominio.condominio }}</a></td>
+                          <td>{{ condominio.rif }}</td>
+                          <td>{{ condominio.correo }}</td>
+                          <td>{{ condominio.nombreEdificacion }}</td>
+                          <td class="text-center">
+                                <a href="{% url 'administradora_app:condominioDetalle' condominio.id %}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open">Detalle</span></a>
+                                <a href="{% url 'administradora_app:condominioActualizar' condominio.id %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil">Actualizar</span></a>
+                                <a href="{% url 'administradora_app:usuarioListar' %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash">Eliminar</span></a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+          </div>
+  </div>
+</div>
+
+
+
+{% endblock contenido %}

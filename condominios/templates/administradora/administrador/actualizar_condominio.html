@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<div class="page">
+  <div class="page-content">
+{% if messages %}
+  {% for message in messages %}
+  <p class="alert alert-dismissable {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{ message }}
+  </p>
+  {% endfor %}
+{% endif %}
+      <div class="page-content vertical-align-middl">
+      <div class="brand">
+        <h2 class="brand-text">Actualizar condominio</h2>
+      </div>
+      <form method="POST" role="form">{% csrf_token %}
+        <div class="form-group">
+        {{ form.condominio }}	
+        </div>
+    
+        <button type="submit" class="btn btn-primary btn-block">Guardar condominio</button>
+      </form>
+      <div class="form-group clearfix">          
+          <a class="pull-center" href="{% url 'usuarios_app:inicio' %}">Volver</a>
+      </div>
+    </div>
+{{ form.errors }}
+
+
+</div>
+</div>
+
+{% endblock contenido %}
