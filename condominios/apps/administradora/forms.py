@@ -143,6 +143,25 @@ class RegistrarCondominioForm(forms.ModelForm):
 				})	
 		}
 
+class ActualizarCondominioForm(forms.Form):
+
+	condominio = forms.CharField(max_length=50, 
+				widget = forms.TextInput(attrs = {
+					'id': 'condominio',
+					'type' : 'text',
+					'class' : 'form-control input-lg',
+					'required' : ''					
+					}))
+
+	correo = forms.CharField(max_length=50,
+	 			widget = forms.EmailInput(attrs = {
+	 				'id': 'inputEmail',
+	 				'type' : 'email',
+	 				'class' : 'form-control',
+	 				'required' : ''	 				
+	 				}))
+
+
 class RegistrarProveedorForm(forms.ModelForm):
 
 	class Meta:
@@ -233,7 +252,6 @@ class RegistrarServicioEspecialForm(forms.ModelForm):
 				}),
 		}
 
-
 class CostoServicioEspecialRegistrarForm(forms.ModelForm):
 	class Meta:
 		model = CostoServicioEspecial
@@ -293,3 +311,28 @@ class RegistrarTipoEdificacionForm(forms.ModelForm):
 				'id': 'edificacion'
 				}),
 		}					
+
+class UsuarioRegistrarForm(forms.ModelForm):
+	class Meta:
+		model = Usuario
+		fields = ('nombre','apellido','cedula')
+		widgets = {
+			'nombre': forms.TextInput(attrs=
+				{
+				'class': 'form-control',
+				'id': 'nombre',
+				'placeholder' : 'Nombre del usuario',
+				}),
+			'apellido': forms.TextInput(attrs=
+				{
+				'class': 'form-control',
+				'id': 'nombre',
+				'placeholder' : 'Apellido del usuario',
+				}),
+			'cedula': forms.TextInput(attrs=
+				{
+				'class': 'form-control',
+				'id': 'nombre',
+				'placeholder' : 'Cedula del usuario',
+				}),			
+		}				
