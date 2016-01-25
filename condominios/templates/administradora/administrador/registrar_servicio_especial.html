@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% block contenido %}
-
+<div class="page">
       <div class="page-content vertical-align-middle">
       <div class="brand">
-         {{ prueba }}
-        <h2 class="brand-text">Registrar servicio mensual</h2>
+        <h2 class="brand-text">Registrar servicio especial</h2>
       </div>
       <form method="POST" role="form">{% csrf_token %}
         <div class="form-group">
-          <label for="condominio">Nombre</label>
-          {{ form.servicioMensual }}
-          {{ form.condominio.errors }}
-        </div> 
+          <label for="servicioEspecial">Nombre</label>
+          {{ form.servicioEspecial }}
+          {{ form.servicioEspecial.errors }}
+        </div>        
         <div class="form-group">
           <label for="proveedor">Proveedor</label>
           {{ form.proveedor }}
@@ -31,6 +30,6 @@
     </div>
 {{ form.errors }}
 
-
+</div>
 
 {% endblock contenido %}
