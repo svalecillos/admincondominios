@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView, ListView
 from apps.usuarios.models import Usuario
 from .models import *
-import base64
 from .forms import *
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
@@ -38,7 +37,7 @@ def historial_movimientos(request):
 class CondominioRegistrarView(SuccessMessageMixin,CreateView):
 
 	form_class = RegistrarCondominioForm
-	template_name = 'condominio/registrar.html'
+	template_name = 'administrador/registrar_condominio.html'
 	success_url = reverse_lazy('administradora_app:condominioRegistrar')
 	success_message = "Condominio creado con exito"
 
@@ -127,12 +126,11 @@ class CostoServicioMensualRegistrarView(CreateView):
 
 class CondominioListarView(ListView):
 
-    template_name = 'condominio/listar.html'
+    template_name = 'administrador/listar_condominio.html'
     model = Condominio
 
     def get_context_data(self, **kwargs):
         context = super(CondominioListarView, self).get_context_data(**kwargs)
-        context['b64id']=base64.b64encode(Condominio.id)
         return context
 
 class CondominioDetailView(DetailView):
@@ -146,13 +144,11 @@ class CondominioDetailView(DetailView):
         # Retornamos el objeto
         return object
 
-class RegistrarCondominioGuiadoView(CreateView):
-	form_class = RegistrarCondominioForm
-	template_name = 'administrador/registrar_condominio_guiado.html'
-	success_url = reverse_lazy('usuarios_app:index')
-	initial = {'condominio': 'defecto'}
-	def form_valid(self, form):
-		return super(RegistrarCondominioGuiadoView, self).form_valid(form)        
+class CondominioUpdate(UpdateView):
+    model = Condominio
+    fields = ['condominio','rif','telefono','correo','avenidaCalle','urbanizacionSector','nombreEdificacion']
+    template_name = 'administrador/actualizar_condominio.html'
+    success_url = '/condominio' #listar
 
 def RegistrarCondominioGuiadoView(request):
 	if request.method == "POST":
@@ -183,3 +179,19 @@ class RegistrarTipoEdificacionView(CreateView):
 		return super(RegistrarTipoEdificacionView, self).form_valid(form)
 
 
+class UsuarioRegistrarView(SuccessMessageMixin,CreateView):
+	form_class = UsuarioRegistrarForm
+	template_name = 'administrador/registrar_usuario.html'
+	#success_url = reverse_lazy('/')
+	success_message = "Usuario registrado con exito"
+	#initial = {'condominio': 'defecto'}
+	def form_valid(self, form):
+		return super(UsuarioRegistrarView, self).form_valid(form)
+
+class UsuarioListarView(ListView):
+    template_name = 'administrador/listar_usuarios.html'
+    model = Usuario
+
+    def get_context_data(self, **kwargs):
+        context = super(UsuarioListarView, self).get_context_data(**kwargs)
+        return context
