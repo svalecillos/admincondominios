@@ -23,6 +23,7 @@ LOCAL_APPS = (
     'apps.venezuela', 
     'apps.administradora',
     'apps.pagos',
+    'apps.api',
     )
 
 THIRD_PARTY_APPS = (
