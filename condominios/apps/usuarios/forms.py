@@ -55,7 +55,7 @@ class RegistrarUsuarioForm(forms.ModelForm):
 
 	class Meta:
 		model = Usuario
-		fields = ('usuario', 'cedula', 'nombre', 'apellido', 'correo', 'password')
+		fields = ('usuario', 'cedula', 'nombre', 'apellido', 'correo', 'rol', 'password')
 		widgets = {
 			'usuario' : forms.TextInput(attrs = 
 				{
@@ -92,6 +92,13 @@ class RegistrarUsuarioForm(forms.ModelForm):
 				'placeholder' : 'Ingresa tu correo',
 				'id': 'inputEmail'
 				}),
+			'rol' : forms.NumberInput(attrs = 
+				{
+				'type' : 'number',
+				'class' : 'form-control', 
+				'placeholder' : 'Ingresa tu rol',
+				'id': 'inputRol'
+				}),
 			'password' : forms.PasswordInput(attrs = 
 				{
 				'type' : 'password',
@@ -101,26 +108,6 @@ class RegistrarUsuarioForm(forms.ModelForm):
 				})
 		}
 
-class CambioClaveForm(forms.Form):
-
-	password = forms.CharField(max_length=25,
- 			widget = forms.PasswordInput(attrs = {
- 				'type' : 'password',
- 				'class' : 'form-control',
- 				'placeholder' : 'Ingresa tu clave',
- 				'id': 'inputPassword',
- 				'required' : ''
- 				}))
-
-	password_confirma = forms.CharField(max_length=25,
- 			widget = forms.PasswordInput(attrs = {
- 				'type' : 'password',
- 				'class' : 'form-control',
- 				'placeholder' : 'Confirma tu clave',
- 				'id': 'inputPasswordConfirma',
- 				'required' : ''
- 				}))
-	
 # class ModificarUsuarioForm(forms.ModelForm):
 
 # 	class Meta:

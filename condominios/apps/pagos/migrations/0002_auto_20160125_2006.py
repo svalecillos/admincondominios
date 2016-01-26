@@ -8,9 +8,9 @@ from django.conf import settings
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('venezuela', '0006_banco'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('pagos', '0001_initial'),
-        ('venezuela', '0001_initial'),
     ]
 
     operations = [

@@ -51,6 +51,12 @@
         </div>
 
         <div class="form-group">
+          <label class="sr-only" for="inputRol">Rol</label>
+          {{ registrar_usuario.rol }}
+          {{ registrar_usuario.rol.errors }}
+        </div>
+
+        <div class="form-group">
           <label class="sr-only" for="inputPassword">Clave</label>
           {{ registrar_usuario.password }}
           {{ registrar_usuario.password.errors }}

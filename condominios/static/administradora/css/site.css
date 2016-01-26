@@ -8884,6 +8884,13 @@ h4.example-title {
   line-height: 1.2;
 }
 
+.img-central{
+  display: block;
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
 @media (max-width: 540px) {
   .text-menu {
     font-size: 14px;

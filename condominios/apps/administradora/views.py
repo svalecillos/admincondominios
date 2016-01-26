@@ -1,11 +1,25 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView, ListView
+from django.contrib.auth.decorators import login_required
 from apps.usuarios.models import Usuario
 from .models import *
 from .forms import *
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
+
+@login_required()
+def inicio(request):
+	#if request.method == "POST":
+		# if 'register_form' in request.POST:
+
+		# 	login_form = LoginForm(request.POST)
+		# 	if login_form.is_valid():
+		# 		LogIn(request, login_form.cleaned_data['usuario'],
+		# 				login_form.cleaned_data['password'])
+		# 		return redirect('/inicio/')
+	#else:
+	return render(request,'inicio.html')
 
 # Modificar a CreateView
 
@@ -21,7 +35,7 @@ def registrar_pago(request):
 
 # Requiere datos de distintos modelos
 
-def historial_movimientos(request):
+def relacion_gastos(request):
 	# if request.method == "POST":
 	# 	form = RegistrarCondominioForm(request.POST)
 	# 	if form.is_valid():
@@ -31,7 +45,7 @@ def historial_movimientos(request):
 	# return render(request, 'condominio.html', 
 	# 			{'formulario' : formulario,
 	# 			'prueba': tuple(TipoEdificacion.objects.all())})
-	return render(request, 'propietario/historial_movimientos.html')
+	return render(request, 'propietario/relacion_gastos.html')
 
 
 class CondominioRegistrarView(SuccessMessageMixin,CreateView):

@@ -13,10 +13,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='RegistroPago',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('monto', models.DecimalField(max_digits=10, decimal_places=2)),
-                ('referencia', models.CharField(max_length=10, unique=True)),
-                ('fecha', models.DateTimeField(default='2016-01-22 18:20:29-04:30')),
+                ('referencia', models.CharField(unique=True, max_length=10)),
+                ('fecha', models.DateTimeField()),
                 ('comentario', models.CharField(max_length=140)),
             ],
             options={
@@ -27,8 +27,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TipoDePago',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
-                ('tipoDePago', models.CharField(max_length=100, verbose_name='Tipo de pagos', unique=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('tipoDePago', models.CharField(unique=True, max_length=100, verbose_name=b'Tipo de pagos')),
             ],
             options={
                 'verbose_name': 'Tipo de pago',

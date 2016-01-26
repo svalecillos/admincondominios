@@ -122,12 +122,10 @@
                                 <form method="post">{% csrf_token %}
                                   <div class="form-group row">
                                     <div class="col-sm-6">
-                                      {{ CambioClaveForm.password }}
-                                      {{ CambioClaveForm.password.errors }} 
+                                      <input type="password" class="form-control" name="password" id="inputPassword" required placeholder="Ingresa tu clave"/>
                                     </div>
                                     <div class="col-sm-6">
-                                      {{ CambioClaveForm.password_confirma }}
-                                      {{ CambioClaveForm.password_confirma.errors }}
+                                      <input type="password" class="form-control" name="passwordConfirma" id="inputPasswordConfirma" required placeholder="Confirma tu clave"/>
                                     </div>
                                   </div>
 

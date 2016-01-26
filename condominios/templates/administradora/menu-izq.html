@@ -4,28 +4,31 @@
         <div>
           <ul class="site-menu">
 
-            <li class="site-menu-category">Propietario</li>
+            {% if user.rol == 1 %}
+              <li class="site-menu-category">Propietario</li>
 
-            <li class="site-menu-item">
-              <a class="animsition-link" href="/inicio">
-                <i class="site-menu-icon fa fa-home" aria-hidden="true"></i>
-                <span class="site-menu-title">Inicio</span>
-              </a>
-            </li>
-            <li class="site-menu-item">
-              <a class="animsition-link" href="/registrar-pago">
-                <i class="site-menu-icon fa fa-file-text" aria-hidden="true"></i>
-                <span class="site-menu-title">Registrar Pago</span>
-              </a>
-            </li>
-            <li class="site-menu-item">
-              <a class="animsition-link" href="/historial-movimientos">
-                <i class="site-menu-icon fa fa-book" aria-hidden="true"></i>
-                <span class="site-menu-title">Historial de Movimientos</span>
-              </a>
-            </li>
+              <li class="site-menu-item">
+                <a class="animsition-link" href="/inicio">
+                  <i class="site-menu-icon fa fa-home" aria-hidden="true"></i>
+                  <span class="site-menu-title">Inicio</span>
+                </a>
+              </li>
+              <li class="site-menu-item">
+                <a class="animsition-link" href="/registrar-pago">
+                  <i class="site-menu-icon fa fa-file-text" aria-hidden="true"></i>
+                  <span class="site-menu-title">Registrar Pago</span>
+                </a>
+              </li>
+              <li class="site-menu-item">
+                <a class="animsition-link" href="/relacion-gastos">
+                  <i class="site-menu-icon fa fa-book" aria-hidden="true"></i>
+                  <span class="site-menu-title">Relación de Gastos</span>
+                </a>
+              </li>
+            {% endif %}
 
-            <li class="site-menu-category">Administradora</li>
+            {% if user.rol == 2 %}
+            <li class="site-menu-category">Administrador</li>
 
             <li class="site-menu-item">
               <a class="animsition-link" href="{% url 'administradora_app:condominioRegistrar' %}" data-slug="angular">
@@ -62,7 +65,31 @@
                 <i class="site-menu-icon bd-angular" aria-hidden="true"></i>
                 <span class="site-menu-title">Costos mensuales</span>
               </a>
-            </li>  
+            </li>
+            {% endif %}
+
+            {% if user.rol == 3 %}
+              <li class="site-menu-category">Administrador Global</li>
+
+              <li class="site-menu-item">
+                <a class="animsition-link" href="/inicio">
+                  <i class="site-menu-icon fa fa-home" aria-hidden="true"></i>
+                  <span class="site-menu-title">Inicio</span>
+                </a>
+              </li>
+              <li class="site-menu-item">
+                <a class="animsition-link" href="/registrar-pago">
+                  <i class="site-menu-icon fa fa-file-text" aria-hidden="true"></i>
+                  <span class="site-menu-title">Registrar Pago</span>
+                </a>
+              </li>
+              <li class="site-menu-item">
+                <a class="animsition-link" href="/relacion-gastos">
+                  <i class="site-menu-icon fa fa-book" aria-hidden="true"></i>
+                  <span class="site-menu-title">Relación de Gastos</span>
+                </a>
+              </li>
+            {% endif %}  
           </ul>
         </div>
       </div>

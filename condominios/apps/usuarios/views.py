@@ -44,23 +44,6 @@ def envio_correo(request):
 	else:
 		return redirect('/')
 
-@login_required()
-def inicio(request):
-	#if request.method == "POST":
-		# if 'register_form' in request.POST:
-
-		# 	login_form = LoginForm(request.POST)
-		# 	if login_form.is_valid():
-		# 		LogIn(request, login_form.cleaned_data['usuario'],
-		# 				login_form.cleaned_data['password'])
-		# 		return redirect('/inicio/')
-	#else:
-	current_user = request.user
-	print ("Prueba user")
-	print (current_user.id)
-	cambioClave = CambioClaveForm()
-	return render(request,'inicio.html',{'CambioClaveForm' : cambioClave})
-
 def registro(request):
 	if request.method == "POST":
 		registrar_usuario = RegistrarUsuarioForm(request.POST)
@@ -70,7 +53,8 @@ def registro(request):
 				cedula = registrar_usuario.cleaned_data['cedula'],
 				nombre = registrar_usuario.cleaned_data['nombre'],
 				apellido = registrar_usuario.cleaned_data['apellido'],
-			 	correo = registrar_usuario.cleaned_data['correo'], 
+			 	correo = registrar_usuario.cleaned_data['correo'],
+			 	rol = registrar_usuario.cleaned_data['rol'],
 			 	password = registrar_usuario.cleaned_data['password'])
 			# LogIn(request, registrar_usuario.cleaned_data['usuario'],
 			# 		registrar_usuario.cleaned_data['password'])
