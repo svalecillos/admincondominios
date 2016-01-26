@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+<div class="page">
+  <div class="page-content">
+  {% include "mensajes_boostrap.html" %} 
+  
+<div class="panel">
+      <div class="panel-body container-fluid">
+
+
+    <div class="container">
+
+        <div class="page-header">
+            <h4>
+                <strong>Eliminando: {{ proveedor.proveedor }}</strong>
+            </h4>
+        </div><!-- page-header -->
+
+        <div class="row">
+            
+            <div class="col-md-12">
+
+                <form role="form" action="{% url 'administradora_app:proveedorEliminar' proveedor.id %}" method="POST">{% csrf_token %}
+                    <p class="">¿Desea eliminar el proveedor "{{ proveedor.proveedor }}"?</p>
+
+                    <input type="submit" value="Sí" class="btn btn-danger"> 
+                    <a href="{% url 'administradora_app:proveedorListar' %}" class="btn btn-default">No</a>
+                </form>
+
+            </div><!-- col-md-12 -->
+
+        </div><!-- /row -->
+
+    </div><!-- /container -->
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+{% endblock contenido %}
