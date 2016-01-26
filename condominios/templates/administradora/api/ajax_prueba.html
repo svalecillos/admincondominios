@@ -1,0 +1,51 @@
+# -*- coding: utf-8 -*-
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<div class="page">
+  <div class="page-content vertical-align-middl">
+
+{% include "mensajes_boostrap.html" %}
+<script src="{% static 'js/jquery.js' %}"></script> 
+<script type="text/javascript">
+        $(document).ready(function () {
+
+          alert(545)
+            $.ajax({
+                type: "POST",
+                url: "/api/ajax/prueba",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    var datos = $.parseJSON(msg.d);
+
+                    $(datos).each(function () {
+                        var option = $(document.createElement('option'));
+
+                        option.text(this.Nombre);
+                        option.val(this.Codigo);
+
+                        $("#cboEjemplo").append(option);
+                    });
+                },
+                error: function (msg) {
+                    $("#dvAlerta > span").text("Error al llenar el combo");
+                }
+            });
+         });
+</script>
+
+<Form>
+ <select id="cboEjemplo">
+  <option value="">Seleccione uno...</option>
+ </select>
+</Form>
+    
+{{ form.errors }}
+
+
+</div>
+</div>
+
+{% endblock contenido %}
