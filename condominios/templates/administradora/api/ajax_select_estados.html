@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<div class="page">
+    <div class="page-content vertical-align-middl">
+
+        {% include "mensajes_boostrap.html" %}
+        <script src="{% static 'js/jquery.js' %}"></script> 
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $.ajaxSetup({ 
+                    beforeSend: function(xhr, settings) {
+                        function getCookie(name) {
+                            var cookieValue = null;
+                            if (document.cookie && document.cookie != '') {
+                                var cookies = document.cookie.split(';');
+                                for (var i = 0; i < cookies.length; i++) {
+                                    var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                    }
+                    }
+                    return cookieValue;
+                    }
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                    // Only send the token to relative URLs i.e. locally.
+                    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                    }
+                    } 
+                    });
+
+                $.ajax({
+                    type: "post",
+                    url: "estados",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+
+                        for (var i = data.resultado.length - 1; i >= 0; i--) {
+                            var option = $(document.createElement('option'));
+                            option.text(data.resultado[i].estado);
+                            option.val(data.resultado[i].id);
+                            $("#estados").append(option);
+                        };
+                        $("#estados").change(function () {
+                            $("#municipios").empty()
+                            //$("#estados option:selected").each(function () {
+                            elegido=$("#estados option:selected");
+                                $.post("municipios", { elegido: elegido.val() }, function(data){
+                                    for (var i = data.resultado.length - 1; i >= 0; i--) {
+                                    var option = $(document.createElement('option'));
+                                    option.text(data.resultado[i].municipio);
+                                    option.val(data.resultado[i].id);
+                                    $("#municipios").append(option);
+                                    };//fin for
+                                });                                 
+
+                            
+                            //});
+                        })
+                        $("#municipios").change(function () {
+                            $("#parroquias").empty()
+                            //$("#estados option:selected").each(function () {
+                            elegido=$("#municipios option:selected");
+                                $.post("parroquias", { elegido: elegido.val() }, function(data){
+                                    for (var i = data.resultado.length - 1; i >= 0; i--) {
+                                    var option = $(document.createElement('option'));
+                                    option.text(data.resultado[i].parroquia);
+                                    option.val(data.resultado[i].id);
+                                    $("#parroquias").append(option);
+                                    };//fin for
+                                });                                 
+
+                            
+                            //});
+                        })                        
+
+                    },//fin success 1
+
+
+
+                    error: function (msg) {
+                        $("#dvAlerta > span").text("Error al llenar el combo");
+                    }
+                    });
+   
+
+
+            });
+</script>
+
+<Form>
+    <select id="estados">
+        <option value="">Seleccione uno...</option>
+    </select>
+    <select name="municipios" id="municipios">
+    </select>
+    <select name="parroquias" id="parroquias">
+    </select>    
+</Form>
+
+{{ form.errors }}
+
+
+</div>
+</div>
+
+{% endblock contenido %}
