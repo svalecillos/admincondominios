@@ -6,6 +6,8 @@
   <!-- Page -->
   <div class="page animsition">
     <div class="page-content container-fluid">
+
+    {% include "mensajes_boostrap.html" %} 
       <div class="row">
 
 
@@ -39,54 +41,46 @@
                 <div class="wizard-pane active" role="tabpanel">
                   <div class="form-group">
                   {% csrf_token %}
-                    <label class="control-label" for="condominio">Condominio</label>
                     {{ form.condominio }}
                   </div>
-                  <div class="form-group">
-                    <label class="control-label" for="rif">Rif</label>
+                
                     {{ form.rif }}
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="telefono">telefono</label>
                     {{ form.telefono }}
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="correo">correo</label>
                     {{ form.correo }}
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="parroquia">parroquia</label>
                     {{ form.parroquia }}
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="ciudad">ciudad</label>
                     {{ form.ciudad }}
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="avenidaCalle">avenidaCalle</label>
                     {{ form.avenidaCalle }}
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="urbanizacionSector">urbanizacionSector</label>
+                  
                     {{ form.urbanizacionSector }}
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="tipoEdificacion">tipoEdificacion</label>
+                  
                     {{ form.tipoEdificacion }}
-                     <a class="pull-center" target="_blank" href="{% url 'administradora_app:tipoEdificacionRegistrar' popup='a58385ab678afdedbd' %}">Volver</a>
+                    
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="nombreEdificacion">nombreEdificacion</label>
+                  
                     {{ form.nombreEdificacion }}
                   </div>
                 </div>
                 <div class="wizard-pane" id="exampleBillingOne" role="tabpanel">
                   <div class="form-group">
-                    <label class="control-label" for="inputCardNumberOne">Card Number</label>
+                  
                     <input type="text" class="form-control" id="inputCardNumberOne" name="number" placeholder="Card number">
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="inputCVVOne">CVV</label>
                     <input type="text" class="form-control" id="inputCVVOne" name="cvv" placeholder="CVV">
                   </div>
                 </div>

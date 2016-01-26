@@ -2,35 +2,36 @@
 {% load static %}
 {% block contenido %}
 <div class="page">
+  <div class="page-content">
+
+{% include "mensajes_boostrap.html" %}
+
       <div class="page-content vertical-align-middle">
       <div class="brand">
-         {{ prueba }}
         <h2 class="brand-text">Registrar servicio mensual</h2>
       </div>
       <form method="POST" role="form">{% csrf_token %}
         <div class="form-group">
-          <label for="condominio">Nombre</label>
           {{ form.servicioMensual }}
           {{ form.condominio.errors }}
         </div> 
         <div class="form-group">
-          <label for="proveedor">Proveedor</label>
           {{ form.proveedor }}
           {{ form.proveedor.errors }}
         </div>
         <div class="form-group">
-          <label for="condominio">condominio</label>
           {{ form.condominio }}
           {{ form.condominio.errors }}
         </div>        
         <button type="submit" class="btn btn-primary btn-block">guardar servicio</button>
       </form>
       <div class="form-group clearfix">          
-          <a class="pull-center" href="{% url 'usuarios_app:inicio' %}">Volver</a>
+          <button type="button" class="btn btn-info btn-block" onclick="history.back();">Volver</button>
       </div>
     </div>
 {{ form.errors }}
 
+</div>
 </div>
 
 {% endblock contenido %}

@@ -3,6 +3,8 @@
 {% block contenido %}
 <div class="page animsition">
   <div class="page-content">
+  {% include "mensajes_boostrap.html" %} 
+
       <div class="page-content vertical-align-middle">
       <div class="brand">
         <h2 class="brand-text">Costos especiales</h2>
@@ -10,14 +12,13 @@
         <div class="form-group">     
       <form method="POST" role="form">{% csrf_token %}     
         <div class="form-group">
-          <label for="proveedor">Proveedor</label>
           {{ form.edificacion }}
           {{ form.edificacion.errors }}
         </div>              
         <button type="submit" class="btn btn-primary btn-block">guardar servicio</button>
       </form>
       <div class="form-group clearfix">          
-          <a class="pull-center" href="{% url 'usuarios_app:inicio' %}">Volver</a>
+          <button type="button" class="btn btn-info btn-block" onclick="history.back();">Volver</button>
       </div>
     </div>
 {{ form.errors }}

@@ -3,6 +3,7 @@
 {% block contenido %}
 <div class="page">
       <div class="page-content vertical-align-middle">
+      {% include "mensajes_boostrap.html" %} 
       <div class="brand">
          {{ prueba }}
         <h2 class="brand-text">Registrar proveedor</h2>
@@ -10,34 +11,29 @@
       <form method="POST" role="form">{% csrf_token %}
 		
         <div class="form-group">
-          <label for="proveedor">Nombre</label>
           {{ form.proveedor }}
           {{ form.proveedor.errors }}
         </div>
         <div class="form-group">
-          <label for="condominio">condominio</label>
           {{ form.condominio }}
           {{ form.condominio.errors }}
         </div>        
         <div class="form-group">
-          <label for="inputEmail">Rif</label>
           {{ form.rif }}
           {{ form.rif.errors }}
         </div>
         <div class="form-group">
-          <label for="telefono">telefono</label>
           {{ form.telefono }}
           {{ form.telefono.errors }}
         </div>        
         <div class="form-group">
-          <label for="correo">correo</label>
           {{ form.correo }}
           {{ form.correo.errors }}
         </div>
         <button type="submit" class="btn btn-primary btn-block">guardar proveedor</button>
       </form>
       <div class="form-group clearfix">          
-          <a class="pull-center" href="{% url 'usuarios_app:inicio' %}">Volver</a>
+          <button type="button" class="btn btn-info btn-block" onclick="history.back();">Volver</button>
       </div>
     </div>
 {{ form.errors }}

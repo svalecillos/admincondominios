@@ -3,29 +3,27 @@
 {% block contenido %}
 <div class="page">
       <div class="page-content vertical-align-middle">
+      {% include "mensajes_boostrap.html" %} 
       <div class="brand">
         <h2 class="brand-text">Registrar servicio especial</h2>
       </div>
       <form method="POST" role="form">{% csrf_token %}
         <div class="form-group">
-          <label for="servicioEspecial">Nombre</label>
           {{ form.servicioEspecial }}
           {{ form.servicioEspecial.errors }}
         </div>        
         <div class="form-group">
-          <label for="proveedor">Proveedor</label>
           {{ form.proveedor }}
           {{ form.proveedor.errors }}
         </div>
         <div class="form-group">
-          <label for="condominio">condominio</label>
           {{ form.condominio }}
           {{ form.condominio.errors }}
         </div>        
         <button type="submit" class="btn btn-primary btn-block">guardar servicio</button>
       </form>
       <div class="form-group clearfix">          
-          <a class="pull-center" href="{% url 'usuarios_app:inicio' %}">Volver</a>
+          <button type="button" class="btn btn-info btn-block" onclick="history.back();">Volver</button>
       </div>
     </div>
 {{ form.errors }}
