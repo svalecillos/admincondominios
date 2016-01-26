@@ -33,7 +33,7 @@ class UserManager(BaseUserManager, models.Manager):
 class Usuario(AbstractBaseUser, PermissionsMixin):
 
 	usuario = models.CharField(max_length=50,unique=True, null=True)
-	cedula = models.PositiveIntegerField(unique=True)
+	cedula = models.PositiveIntegerField()
 	nombre = models.CharField(max_length=50)
 	apellido = models.CharField(max_length=50)
 	correo = models.EmailField(null=True)
