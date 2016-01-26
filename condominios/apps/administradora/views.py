@@ -48,20 +48,7 @@ def relacion_gastos(request):
 	return render(request, 'propietario/relacion_gastos.html')
 
 
-class CondominioRegistrarView(SuccessMessageMixin,CreateView):
 
-	form_class = RegistrarCondominioForm
-	template_name = 'administrador/registrar_condominio.html'
-	success_url = reverse_lazy('administradora_app:condominioRegistrar')
-	success_message = "Condominio creado con exito"
-
-	def form_valid(self, form):
-		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
-		return super(CondominioRegistrarView, self).form_valid(form)
-
-	def get_context_data(self,**kwargs):
-		context = super(CondominioRegistrarView, self).get_context_data(**kwargs)
-		return context 
 
 
 def condominio_old(request):
@@ -74,17 +61,6 @@ def condominio_old(request):
 	return render(request, 'condominio.html', 
 				{'formulario' : formulario,
 				'prueba': tuple(TipoEdificacion.objects.all())})
-
-
-class ProveedorRegistrarView(CreateView):
-
-	form_class = RegistrarProveedorForm
-	template_name = 'proveedor/registrar.html'
-	success_url = reverse_lazy('administradora_app:proveedorRegistrar')
-
-	def form_valid(self, form):
-		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
-		return super(ProveedorRegistrarView, self).form_valid(form)
 
 def proveedor(request):
 	if request.method == "POST":
@@ -99,19 +75,10 @@ def proveedor(request):
 	return render(request, 'proveedor.html', 
 				{'formulario' : formulario})
 
-class ServicioMensualRegistrarView(CreateView):
-
-	form_class = RegistrarServicioMensualForm
-	template_name = 'servicio mensual/registrar.html'
-	success_url = reverse_lazy('administradora_app:servicioMensualRegistrar')
-
-	def form_valid(self, form):
-		return super(ServicioMensualRegistrarView, self).form_valid(form)
-
 class ServicioEspecialRegistrarView(CreateView):
 
 	form_class = RegistrarServicioEspecialForm
-	template_name = 'servicio especial/registrar.html'
+	template_name = 'administrador/registrar_servicio_especial.html'
 	success_url = reverse_lazy('administradora_app:servicioEspecialRegistrar')
 
 	def form_valid(self, form):
@@ -122,7 +89,7 @@ class ServicioEspecialRegistrarView(CreateView):
 
 class CostoServicioEspecialRegistrarView(CreateView):
 	form_class = CostoServicioEspecialRegistrarForm
-	template_name = 'costo servicio especial/registrar.html'
+	template_name = 'administrador/registrar_costo_servicio_especial.html'
 	success_url = reverse_lazy('administradora_app:costoServicioEspecialRegistrar')
 
 	def form_valid(self, form):
@@ -131,38 +98,12 @@ class CostoServicioEspecialRegistrarView(CreateView):
 
 class CostoServicioMensualRegistrarView(CreateView):
 	form_class = CostoServicioMensualRegistrarForm
-	template_name = 'costo servicio mensual/registrar.html'
+	template_name ='administrador/registrar_costo_servicio_mensual.html'
 	success_url = reverse_lazy('administradora_app:costoServicioMensualRegistrar')
 
 	def form_valid(self, form):
 		return super(CostoServicioMensualRegistrarView, self).form_valid(form)
 
-
-class CondominioListarView(ListView):
-
-    template_name = 'administrador/listar_condominio.html'
-    model = Condominio
-
-    def get_context_data(self, **kwargs):
-        context = super(CondominioListarView, self).get_context_data(**kwargs)
-        return context
-
-class CondominioDetailView(DetailView):
- 
-    queryset = Condominio.objects.all()
-    template_name = 'condominio/detalle.html'
- 
-    def get_object(self):
-        # Llamamos a la superclase
-        object = super(CondominioDetailView, self).get_object()
-        # Retornamos el objeto
-        return object
-
-class CondominioUpdate(UpdateView):
-    model = Condominio
-    fields = ['condominio','rif','telefono','correo','avenidaCalle','urbanizacionSector','nombreEdificacion']
-    template_name = 'administrador/actualizar_condominio.html'
-    success_url = '/condominio' #listar
 
 def RegistrarCondominioGuiadoView(request):
 	if request.method == "POST":
@@ -176,6 +117,65 @@ def RegistrarCondominioGuiadoView(request):
 		formulario = RegistrarCondominioForm()
 	return render(request, 'administrador/registrar_condominio_guiado.html', 
 				{'form' : formulario})
+
+
+
+
+
+
+
+
+
+class CondominioRegistrarView(SuccessMessageMixin,CreateView):
+
+	form_class = RegistrarCondominioForm
+	template_name = 'administrador/registrar_condominio.html'
+	success_url = reverse_lazy('administradora_app:condominioRegistrar')
+	success_message = "Condominio creado con exito"
+
+	def form_valid(self, form):
+		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
+		return super(CondominioRegistrarView, self).form_valid(form)
+
+	def get_context_data(self,**kwargs):
+		context = super(CondominioRegistrarView, self).get_context_data(**kwargs)
+		return context 
+		
+class CondominioListarView(ListView):
+
+    template_name = 'administrador/listar_condominio.html'
+    model = Condominio
+
+    def get_context_data(self, **kwargs):
+        context = super(CondominioListarView, self).get_context_data(**kwargs)
+        context['cantidad'] = context['condominio_list'].count()
+        return context
+
+class CondominioDetalle(DetailView):
+ 
+    queryset = Condominio.objects.all()
+    template_name = 'administrador/detalle_condominio.html'
+ 
+    def get_object(self):
+        # Llamamos a la superclase
+        object = super(CondominioDetalle, self).get_object()
+        # Retornamos el objeto
+        return object
+
+class CondominioActualizar(SuccessMessageMixin,UpdateView):
+    model = Condominio
+    fields = ['condominio','rif','telefono','correo','avenidaCalle','urbanizacionSector','nombreEdificacion']
+    template_name = 'administrador/actualizar_condominio.html'
+    success_message = "Condominio actualizado con exito"
+    success_url = '/condominio' #listar
+
+class CondominioEliminar(SuccessMessageMixin,DeleteView):
+
+    template_name = 'administrador/eliminar_condominio.html'
+    model = Condominio
+    success_message = "Condominio eliminado con exito"
+    success_url = '/condominio'
+
 
 
 class RegistrarTipoEdificacionView(CreateView):
@@ -193,11 +193,12 @@ class RegistrarTipoEdificacionView(CreateView):
 		return super(RegistrarTipoEdificacionView, self).form_valid(form)
 
 
+
 class UsuarioRegistrarView(SuccessMessageMixin,CreateView):
 	form_class = UsuarioRegistrarForm
 	template_name = 'administrador/registrar_usuario.html'
-	#success_url = reverse_lazy('/')
-	success_message = "Usuario registrado con exito"
+	success_url = reverse_lazy('/')
+	success_message = "Usuario pre-registrado con exito"
 	#initial = {'condominio': 'defecto'}
 	def form_valid(self, form):
 		return super(UsuarioRegistrarView, self).form_valid(form)
@@ -209,3 +210,102 @@ class UsuarioListarView(ListView):
     def get_context_data(self, **kwargs):
         context = super(UsuarioListarView, self).get_context_data(**kwargs)
         return context
+
+
+
+
+
+
+class ProveedorRegistrarView(SuccessMessageMixin,CreateView):
+
+	form_class = RegistrarProveedorForm
+	template_name = 'administrador/registrar_proveedor.html'
+	success_message = 'Proveedor registrado con exito'
+	success_url = reverse_lazy('administradora_app:proveedorRegistrar')
+
+	def form_valid(self, form):
+		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
+		return super(ProveedorRegistrarView, self).form_valid(form)
+
+class ProveedorListarView(ListView):
+
+    template_name = 'administrador/listar_proveedor.html'
+    model = Proveedor
+
+    def get_context_data(self, **kwargs):
+        context = super(ProveedorListarView, self).get_context_data(**kwargs)
+        context['cantidad'] = context['proveedor_list'].count()
+        return context
+
+class ProveedorDetalle(DetailView):
+ 
+    queryset = Proveedor.objects.all()
+    template_name = 'administrador/detalle_proveedor.html'
+ 
+    def get_object(self):
+        # Llamamos a la superclase
+        object = super(ProveedorDetalle, self).get_object()
+        # Retornamos el objeto
+        return object
+
+class ProveedorActualizar(SuccessMessageMixin,UpdateView):
+    model = Proveedor
+    fields = ['condominio','proveedor','telefono','correo']
+    template_name = 'administrador/actualizar_proveedor.html'
+    success_message = "Proveedor actualizado con exito"
+    success_url = '/proveedor' #listar
+
+class ProveedorEliminar(SuccessMessageMixin,DeleteView):
+
+    template_name = 'administrador/eliminar_proveedor.html'
+    model = Proveedor
+    success_message = "Proveedor eliminado con exito"
+    success_url = '/proveedor'
+
+
+
+
+
+
+class ServicioMensualRegistrarView(SuccessMessageMixin,CreateView):
+
+	form_class = RegistrarServicioMensualForm
+	template_name = 'administrador/registrar_servicio_mensual.html'
+	success_url = reverse_lazy('administradora_app:servicioMensualRegistrar')
+	success_message='Servicio asociado exitosamente'
+
+	def form_valid(self, form):
+		return super(ServicioMensualRegistrarView, self).form_valid(form)
+
+class ServicioMensualListarView(ListView):
+
+    template_name = 'administrador/listar_servicio_mensual.html'
+    model = ServicioMensual
+
+    def get_context_data(self, **kwargs):
+        context = super(ServicioMensualListarView, self).get_context_data(**kwargs)
+        context['cantidad'] = context['serviciomensual_list'].count()
+        return context
+
+class ServicioMensualDetalle(DetailView):
+ 
+    queryset = ServicioMensual.objects.all()
+    template_name = 'administrador/detalle_servicio_mensual.html'
+ 
+    def get_object(self):
+        sm = super(ServicioMensualDetalle, self).get_object()
+        return sm
+
+class ServicioMensualActualizar(SuccessMessageMixin,UpdateView):
+    model = ServicioMensual
+    fields = ['condominio','proveedor','servicioMensual']
+    template_name = 'administrador/actualizar_servicio_mensual.html'
+    success_message = "Servicio actualizado con exito"
+    success_url = '/servicioMensual' #listar
+
+class ServicioMensualEliminar(SuccessMessageMixin,DeleteView):
+
+    template_name = 'administrador/eliminar_servicio_mensual.html'
+    model = ServicioMensual
+    success_message = "Servicio eliminado con exito"
+    success_url = '/servicioMensual'
