@@ -8,7 +8,7 @@ urlpatterns = patterns('',
 				url(r'^registrar-usuario$',UsuarioRegistrarView.as_view(),name='usuarioRegistrar'),	
 				url(r'^listar-usuario$',UsuarioListarView.as_view(),name='usuarioListar'),
 				url(r'^administradora/servicioespecial/registrar$', ServicioEspecialRegistrarView.as_view(), name='servicioEspecialRegistrar'),
-				url(r'^administradora/serviciomensual/registrar$', ServicioMensualRegistrarView.as_view(), name='servicioMensualRegistrar'),
+				#url(r'^administradora/serviciomensual/registrar$', ServicioMensualRegistrarView.as_view(), name='servicioMensualRegistrar'),
 				url(r'^administradora/costoservicioespecial/registrar$', CostoServicioEspecialRegistrarView.as_view(), name='costoServicioEspecialRegistrar'),
 				url(r'^administradora/costoserviciomensual/registrar$', CostoServicioMensualRegistrarView.as_view(), name='costoServicioMensualRegistrar'),
 				url(r'^registrar-pago$', 'apps.administradora.views.registrar_pago', name='registrar_pago'),
@@ -31,7 +31,7 @@ urlpatterns = patterns('',
 				url(r'^servicioMensual/registrar$', ServicioMensualRegistrarView.as_view(), name='servicioMensualRegistrar'),						
 				url(r'^servicioMensual/detalle/(?P<pk>\d+)/$', ServicioMensualDetalle.as_view(), name='servicioMensualDetalle'),
 				url(r'^servicioMensual/actualizar/(?P<pk>\d+)/$', ServicioMensualActualizar.as_view(), name='servicioMensualActualizar'),
-				url(r'^servicioMensual/eliminar/(?P<pk>\d+)/$',ServicioMensualEliminar.as_view(), name='servicioMensualEliminar'),
+				url(r'^servicioMensual/eliminar/(?P<pk>\d+)/$',ServicioMensualEliminar, name='servicioMensualEliminar'),
 
 				
 	)
