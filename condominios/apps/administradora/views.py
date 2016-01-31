@@ -280,7 +280,8 @@ class ServicioMensualRegistrarView(SuccessMessageMixin,CreateView):
 class ServicioMensualListarView(ListView):
 
     template_name = 'administrador/listar_servicio_mensual.html'
-    model = ServicioMensual
+    #model = ServicioMensual
+    queryset = ServicioMensual.objects.filter(estatus=1) #donde el servico este activo
 
     def get_context_data(self, **kwargs):
         context = super(ServicioMensualListarView, self).get_context_data(**kwargs)
@@ -303,9 +304,14 @@ class ServicioMensualActualizar(SuccessMessageMixin,UpdateView):
     success_message = "Servicio actualizado con exito"
     success_url = '/servicioMensual' #listar
 
-class ServicioMensualEliminar(SuccessMessageMixin,DeleteView):
 
-    template_name = 'administrador/eliminar_servicio_mensual.html'
-    model = ServicioMensual
-    success_message = "Servicio eliminado con exito"
-    success_url = '/servicioMensual'
+def ServicioMensualEliminar(request,pk):
+	if request.method == "POST":
+		if request.POST:
+			obj=ServicioMensual.objects.get(pk=pk)
+			obj.estatus=0
+			obj.save()
+			return redirect('/servicioMensual')
+	else:
+		return render(request, 'administrador/eliminar_servicio_mensual.html', 
+				{'ServicioMensual' : ServicioMensual.objects.get(pk=pk)})    
