@@ -24,10 +24,10 @@ class UserManager(BaseUserManager, models.Manager):
 		usuario.save( using = self._db)
 		return usuario
 		
-	def create_user(self, usuario, cedula, nombre, apellido, correo, rol, password=None, **extra_fields):
+	def create_user(self, usuario, cedula, nombre, apellido, correo, rol=3, password=None, **extra_fields):
 		return self._create_user(usuario, cedula, nombre, apellido, correo, rol, password, False, False, **extra_fields)
 
-	def create_superuser(self, usuario, cedula, nombre, apellido, correo, rol, password=None, **extra_fields):
+	def create_superuser(self, usuario, cedula, nombre, apellido, correo, rol=1, password=None, **extra_fields):
 		return self._create_user(usuario, cedula, nombre, apellido, correo, rol, password, True, True, **extra_fields)
 
 class Usuario(AbstractBaseUser, PermissionsMixin):
@@ -47,7 +47,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
 	objects = UserManager()
 	USERNAME_FIELD ='usuario'
-	REQUIRED_FIELDS =['cedula','nombre','apellido']
+	REQUIRED_FIELDS =['cedula','nombre','apellido','correo']
 
 	def __unicode__(self):
 		return self.nombre + " " + self.apellido
