@@ -23,7 +23,7 @@ def estados(request):
 	response_data = {}
 	#response_data['id'] =  list(Estado.objects.values('id'))
 	#response_data['estado'] = list(Estado.objects.values('estado'))
-	response_data['resultado'] =  list(Estado.objects.values('id','estado'))
+	response_data['resultado'] =  list(Estado.objects.values('id','estado').order_by("-estado"))
 	if request.is_ajax():
 		return JsonResponse(response_data)
 	else:
@@ -33,22 +33,29 @@ def municipios(request):
 
 	if request.is_ajax():
 		response_data = {}
-		response_data['resultado'] =  list(Municipio.objects.values('id','municipio').filter(estado_id=request.POST['elegido']))		
+		response_data['resultado'] =  list(Municipio.objects.values('id','municipio').filter(estado_id=request.POST['elegido']).order_by("-municipio"))		
 		return JsonResponse(response_data)
 	else:
 		response_data = {}
-		response_data['resultado'] =  list(Municipio.objects.values('id','municipio').filter(estado_id=request.GET['elegido']))
+		response_data['resultado'] =  list(Municipio.objects.values('id','municipio').filter(estado_id=request.GET['elegido']).order_by("-municipio"))
 		return JsonResponse(response_data)
 
 def parroquias(request):
 
 	if request.is_ajax():
 		response_data = {}
-		response_data['resultado'] =  list(Parroquia.objects.values('id','parroquia').filter(municipio_id=request.POST['elegido']))		
+		response_data['resultado'] =  list(Parroquia.objects.values('id','parroquia').filter(municipio_id=request.POST['elegido']).order_by("-parroquia"))		
 		return JsonResponse(response_data)
 	else:
 		response_data = {}
-		response_data['resultado'] =  list(Parroquia.objects.values('id','parroquia').filter(municipio_id=request.GET['elegido']))
+		response_data['resultado'] =  list(Parroquia.objects.values('id','parroquia').filter(municipio_id=request.GET['elegido']).order_by("-parroquia"))
+		return JsonResponse(response_data)
+
+def buscar_condominios(request):
+
+	if request.is_ajax():
+		response_data = {}
+		response_data['resultado'] =  list(Condominio.objects.filter(condominio__startswith= request.GET['nombre'] ).values('condominio', 'id'))
 		return JsonResponse(response_data)
 
 def select(request):
