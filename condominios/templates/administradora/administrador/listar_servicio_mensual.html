@@ -2,7 +2,7 @@
 {% load static %}
 {% block contenido %}
 
-<div class="page animsition">
+<div class="page">
   <div class="page-content">
 
 {% include "mensajes_boostrap.html" %}
@@ -38,7 +38,11 @@
                           <td class="text-center">
                                 <a style="text-decoration:none" href="{% url 'administradora_app:servicioMensualDetalle' servicio.id %}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open">Detalle</span></a>
                                 <a style="text-decoration:none" href="{% url 'administradora_app:servicioMensualActualizar' servicio.id %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil">Actualizar</span></a>
-                                <a style="text-decoration:none" href="{% url 'administradora_app:servicioMensualEliminar' servicio.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash">Eliminar</span></a>
+                                {% if servicio.estatus == 1 %}
+                                <a style="text-decoration:none" href="{% url 'administradora_app:servicioMensualEliminar' servicio.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash">Desactivar</span></a>
+                                {% else %}
+                                <a style="text-decoration:none" href="{% url 'administradora_app:servicioMensualEliminar' servicio.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-trash">Reactivar</span></a>
+                                {% endif %}
                           </td>
                         </tr>
                         {% endfor %}
