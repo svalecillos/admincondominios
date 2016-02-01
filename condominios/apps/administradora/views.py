@@ -7,6 +7,9 @@ from .forms import *
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
+from django.contrib import messages
+from sertiven.utiles import ver
+
 
 @login_required()
 def inicio(request):
@@ -82,9 +85,7 @@ class ServicioEspecialRegistrarView(CreateView):
 	success_url = reverse_lazy('administradora_app:servicioEspecialRegistrar')
 
 	def form_valid(self, form):
-		print("\n")
-		print("\n--------------------------------------------------\n")
-		print(self.request.POST)
+		ver(self.request.POST)
 		return super(ServicioEspecialRegistrarView, self).form_valid(form)		
 
 class CostoServicioEspecialRegistrarView(CreateView):
@@ -136,6 +137,14 @@ class CondominioRegistrarView(SuccessMessageMixin,CreateView):
 	def form_valid(self, form):
 		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
 		return super(CondominioRegistrarView, self).form_valid(form)
+
+	def form_invalid(self, form):
+		response = super(CondominioRegistrarView, self).form_invalid(form)
+		if self.request.is_ajax():
+			return JsonResponse(form.errors, status=400)
+		else:
+			ver(form.errors,'form.errors')
+			return response
 
 	def get_context_data(self,**kwargs):
 		context = super(CondominioRegistrarView, self).get_context_data(**kwargs)
@@ -280,8 +289,8 @@ class ServicioMensualRegistrarView(SuccessMessageMixin,CreateView):
 class ServicioMensualListarView(ListView):
 
     template_name = 'administrador/listar_servicio_mensual.html'
-    #model = ServicioMensual
-    queryset = ServicioMensual.objects.filter(estatus=1) #donde el servico este activo
+    model = ServicioMensual
+    #queryset = ServicioMensual.objects.filter(estatus=1) #donde el servico este activo
 
     def get_context_data(self, **kwargs):
         context = super(ServicioMensualListarView, self).get_context_data(**kwargs)
@@ -309,8 +318,14 @@ def ServicioMensualEliminar(request,pk):
 	if request.method == "POST":
 		if request.POST:
 			obj=ServicioMensual.objects.get(pk=pk)
-			obj.estatus=0
-			obj.save()
+			if obj.estatus==0:
+				obj.estatus=1
+				obj.save()
+				messages.info(request, 'Servicio reactivado con exito.')
+			else:
+				obj.estatus=0
+				obj.save()
+				messages.info(request, 'Servicio desactivado con exito.')				
 			return redirect('/servicioMensual')
 	else:
 		return render(request, 'administrador/eliminar_servicio_mensual.html', 
