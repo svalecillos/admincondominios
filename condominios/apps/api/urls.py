@@ -8,4 +8,5 @@ urlpatterns = patterns('',
 				url(r'^ajax/parroquias$', 'apps.api.views.parroquias', name='ajaxparroquias'),
 				url(r'^ajax/select$', 'apps.api.views.select', name='select'),
 				url(r'^ajax/select_estados$', 'apps.api.views.select_estados', name='select_estados'),
+				url(r'^ajax/buscar_condominio$', 'apps.api.views.buscar_condominios', name='buscar_condominios'),
 	)
