@@ -80,7 +80,28 @@ error: function (msg) {
     $("#dvAlerta > span").text("Error al llenar el combo");
   }
 });
+
+
+$('#buscarcondominios').keyup(function(e){
+  consulta = $("#buscarcondominios").val();
+    $.ajax({
+      data: {'nombre': consulta},
+      url: '/api/ajax/buscar_condominio',
+      type: 'get',
+      success : function(data) {
+        console.log(data.resultado[0].condominio);
+        $('#resultadobuscador').text(data.resultado[0].condominio)
+      },
+      error : function(message) {
+        console.log(message);
+      }
+    });
+  });
+
+
 });
+
+
 </script>
 <div class="page">
   <div class="page-content">
@@ -152,8 +173,8 @@ error: function (msg) {
       {{ form.errors }}
       </div>
 
-
-  
+<input type="text" placeholder="Buscar condominios" id="buscarcondominios">
+<div id="resultadobuscador"></div>  
 </div>
 </div>
 
