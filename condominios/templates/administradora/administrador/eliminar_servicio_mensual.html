@@ -14,7 +14,7 @@
 
         <div class="page-header">
             <h4>
-                <strong>Eliminando: {{ ServicioMensual.ServicioMensual }}</strong>
+                <strong>Alterando: {{ ServicioMensual.ServicioMensual }}</strong>
             </h4>
         </div><!-- page-header -->
 
@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <form role="form" action="{% url 'administradora_app:servicioMensualEliminar' ServicioMensual.id %}" method="POST">
                 {% csrf_token %}
-                    <p class="">¿Desea eliminar el ServicioMensual "{{ ServicioMensual.servicioMensual }}"?</p>
+                    <p class="">¿Desea alterar el ServicioMensual "{{ ServicioMensual.servicioMensual }}"?</p>
 
                     <input type="submit" value="Sí" class="btn btn-danger"> 
                     <a href="{% url 'administradora_app:servicioMensualListar' %}" class="btn btn-default">No</a>
