@@ -1,6 +1,91 @@
 {% extends "base.html" %}
 {% load static %}
 {% block contenido %}
+<script src="{% static 'js/jquery.js' %}"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+$btn = $('#boton1');
+  $btn.on('click',function(e){
+    e.preventDefault();
+    $modal = $('#myModal');
+    $modal.modal('show');
+  });
+
+$.ajaxSetup({ 
+    beforeSend: function(xhr, settings) {
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+// Does this cookie string begin with the name we want?
+    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+    }
+    }
+    }
+    return cookieValue;
+    }
+    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+    // Only send the token to relative URLs i.e. locally.
+    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+    }
+    } 
+    });
+
+$.ajax({
+    type: "post",
+    url: "/api/ajax/condominios",
+    data: "{}",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+        $("#condominio").empty()
+        $("#condominio").append($(document.createElement('option')).text('Seleccione un condominio'));
+          for (var i = data.resultado.length - 1; i >= 0; i--) {
+              var option = $(document.createElement('option'));
+              option.text(data.resultado[i].condominio);
+              option.val(data.resultado[i].id);
+              $("#condominio").append(option);
+        }
+        $("#condominio").change(function () {
+            $("#proveedor").empty()
+            $("#proveedor").append($(document.createElement('option')).text('Seleccione un proveedor'));
+            elegido=$("#condominio option:selected");
+                $.post("/api/ajax/proveedores", { elegido: elegido.val() }, function(data)
+                {
+                  cantidad=data.resultado.length;
+                    if(cantidad==0){
+                      alert('El condominio no  tiene ningun proveedor')
+                    }
+                    else
+                    {
+                        for (var i = data.resultado.length - 1; i >= 0; i--) {
+                          var option = $(document.createElement('option'));
+                          option.text(data.resultado[i].proveedor);
+                          option.val(data.resultado[i].id);
+                          $("#proveedor").append(option);
+                          }//fin for
+                    }
+                });
+        })                        
+
+    },//fin success 1
+
+
+
+error: function (msg) {
+    $("#dvAlerta > span").text("Error al llenar el combo");
+  }
+});
+});
+</script>
+
 <div class="page">
   <div class="page-content">
 
@@ -12,17 +97,16 @@
       </div>
       <form method="POST" role="form">{% csrf_token %}
         <div class="form-group">
-          {{ form.servicioMensual }}
-          {{ form.condominio.errors }}
-        </div> 
-        <div class="form-group">
-          {{ form.proveedor }}
-          {{ form.proveedor.errors }}
+          <select id="condominio" class='form-control'></select>
         </div>
         <div class="form-group">
-          {{ form.condominio }}
+          <select id="proveedor" class='form-control'></select>
+          <span class="btn" id="boton1">modal</span>
+        </div>
+        <div class="form-group">
+          {{ form.servicioMensual }}
           {{ form.condominio.errors }}
-        </div>        
+        </div>         
         <button type="submit" class="btn btn-primary btn-block">guardar servicio</button>
       </form>
       <div class="form-group clearfix">          
@@ -34,4 +118,34 @@
 </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <!-- Botón para cerrar la ventana -->
+    <button type="button" class="close" data-dismiss="modal">
+      <span aria-hidden="true">×</span>
+      <span class="sr-only">Cerrar</span>
+    </button>
+        <!-- Título de la ventana -->
+    <h2 class="title">Registrar proveedor</h2>
+      </div>
+    
+      <div class="modal-body">
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+          $("#valor").text($("#condominio option:selected").val())
+        });
+        </script>
+        <div id="valor"><div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Modal -->
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-modal.js' %}"></script>
 {% endblock contenido %}
