@@ -2,7 +2,7 @@ import json
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from apps.administradora.models import Condominio
+from apps.administradora.models import *
 from apps.venezuela.models import *
 
 def ApiPrueba(request):
@@ -49,6 +49,28 @@ def parroquias(request):
 	else:
 		response_data = {}
 		response_data['resultado'] =  list(Parroquia.objects.values('id','parroquia').filter(municipio_id=request.GET['elegido']).order_by("-parroquia"))
+		return JsonResponse(response_data)
+
+def condominios(request):
+
+	if request.is_ajax():
+		response_data = {}
+		response_data['resultado'] =  list(Condominio.objects.values('id','condominio'))		
+		return JsonResponse(response_data)
+	else:
+		response_data = {}
+		response_data['resultado'] =  list(Condominio.objects.values('id','condominio'))
+		return JsonResponse(response_data)
+
+def proveedores(request):
+
+	if request.is_ajax():
+		response_data = {}
+		response_data['resultado'] =  list(Proveedor.objects.values('id','proveedor').filter(condominio_id=request.POST['elegido']).order_by("-proveedor"))		
+		return JsonResponse(response_data)
+	else:
+		response_data = {}
+		response_data['resultado'] =  list(Proveedor.objects.values('id','proveedor').filter(condominio_id=request.GET['elegido']).order_by("-proveedor"))
 		return JsonResponse(response_data)
 
 def buscar_condominios(request):
