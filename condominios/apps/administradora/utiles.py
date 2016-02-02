@@ -65,6 +65,3 @@ class Reutilizable(object):
 	def diccionario(self):
 			return {str(self.modelo.__name__) : self.modelo.objects.get(pk=self.id)}
 	
-
-
-		
