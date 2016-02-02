@@ -9,29 +9,32 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .utiles import *
 
-class CondominioRegistrarView(SuccessMessageMixin,CreateView):
 
+
+class CondominioRegistrarView(SuccessMessageMixin,CreateView):
+    
     form_class = RegistrarCondominioForm
     template_name = 'administrador/registrar_condominio.html'
     success_url = reverse_lazy('administradora_app:condominioRegistrar')
     success_message = "Condominio creado con exito"
+
 
     def form_valid(self, form):
         form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
         form.instance.estatus=True
         return super(CondominioRegistrarView, self).form_valid(form)
 
-        def form_invalid(self, form):
-            response = super(CondominioRegistrarView, self).form_invalid(form)
-            if self.request.is_ajax():
-                return JsonResponse(form.errors, status=400)
-            else:
-                ver(form.errors,'form.errors')
-                return response
+    def form_invalid(self, form):
+        response = super(CondominioRegistrarView, self).form_invalid(form)
+        if self.request.is_ajax():
+            return JsonResponse(form.errors, status=400)
+        else:
+            ver(form.errors,'form.errors')
+            return response
 
-        def get_context_data(self,**kwargs):
-            context = super(CondominioRegistrarView, self).get_context_data(**kwargs)
-            return context 
+    def get_context_data(self,**kwargs):
+        context = super(CondominioRegistrarView, self).get_context_data(**kwargs)
+        return context 
 		
 class CondominioListarView(ListView):
 
