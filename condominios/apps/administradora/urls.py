@@ -30,7 +30,7 @@ urlpatterns = patterns('',
 				url(r'^proveedor/registrar$', ProveedorRegistrarView.as_view(), name='proveedorRegistrar'),						
 				url(r'^proveedor/detalle/(?P<pk>\d+)/$', ProveedorDetalle.as_view(), name='proveedorDetalle'),
 				url(r'^proveedor/actualizar/(?P<pk>\d+)/$', ProveedorActualizar.as_view(), name='proveedorActualizar'),
-				url(r'^proveedor/eliminar/(?P<pk>\d+)/$', ProveedorEliminar.as_view(), name='proveedorEliminar'),				
+				url(r'^proveedor/eliminar/(?P<pk>\d+)/$', ProveedorEliminar, name='proveedorEliminar'),				
 				#servicios mensuales
 				url(r'^servicioMensual/$', ServicioMensualListarView.as_view(), name='servicioMensualListar'),
 				url(r'^servicioMensual/registrar$', ServicioMensualRegistrarView.as_view(), name='servicioMensualRegistrar'),						
