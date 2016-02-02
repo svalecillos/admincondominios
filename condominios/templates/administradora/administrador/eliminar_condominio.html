@@ -14,7 +14,7 @@
 
         <div class="page-header">
             <h4>
-                <strong>Eliminando: {{ condominio.condominio }}</strong>
+                <strong>Eliminando: {{ Condominio.condominio }}</strong>
             </h4>
         </div><!-- page-header -->
 
@@ -22,8 +22,8 @@
             
             <div class="col-md-12">
 
-                <form role="form" action="{% url 'administradora_app:condominioEliminar' condominio.id %}" method="POST">{% csrf_token %}
-                    <p class="">¿Desea eliminar el condominio "{{ condominio.condominio }}"?</p>
+                <form role="form" action="{% url 'administradora_app:condominioEliminar' Condominio.id %}" method="POST">{% csrf_token %}
+                    <p class="">¿Desea eliminar el condominio "{{ Condominio.condominio }}"?</p>
 
                     <input type="submit" value="Sí" class="btn btn-danger"> 
                     <a href="{% url 'administradora_app:condominioListar' %}" class="btn btn-default">No</a>

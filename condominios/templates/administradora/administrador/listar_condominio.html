@@ -33,14 +33,18 @@
                     <tbody>
                         {% for condominio in object_list %}
                         <tr>
-                          <td colspan="2"><a style="text-decoration:none" href="/condominio/actualizar/{{ condominio.id }}" data-rel="external">{{ condominio.condominio }}</a></td>
+                          <td colspan="2"><a style="text-decoration:none" href="{% url 'administradora_app:condominioActualizar' condominio.id %}" data-rel="external">{{ condominio.condominio }}</a></td>
                           <td>{{ condominio.rif }}</td>
-                          <td>{{ condominio.correo }}</td>
-                          <td>{{ condominio.nombreEdificacion }}</td>
+                          <td>{{ condominio.telefono }}</td>
+                          <td>{{ condominio.correo }}</td>                          
                           <td class="text-center">
                                 <a style="text-decoration:none" href="{% url 'administradora_app:condominioDetalle' condominio.id %}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open">Detalle</span></a>
                                 <a style="text-decoration:none" href="{% url 'administradora_app:condominioActualizar' condominio.id %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil">Actualizar</span></a>
-                                <a style="text-decoration:none" href="{% url 'administradora_app:condominioEliminar' condominio.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash">Eliminar</span></a>
+                                {% if condominio.estatus == 1 %}
+                                <a style="text-decoration:none" href="{% url 'administradora_app:condominioEliminar' condominio.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash">Desactivar</span></a>
+                                {% else %}
+                                <a style="text-decoration:none" href="{% url 'administradora_app:condominioEliminar' condominio.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-trash">Reactivar</span></a>
+                                {% endif %}
                           </td>
                         </tr>
                         {% endfor %}
