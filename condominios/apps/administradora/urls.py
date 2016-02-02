@@ -24,7 +24,7 @@ urlpatterns = patterns('',
 				url(r'^condominio/registrar$',CondominioRegistrarView.as_view(),name='condominioRegistrar'),						
 				url(r'^condominio/detalle/(?P<pk>\d+)/$', CondominioDetalle.as_view(), name='condominioDetalle'),
 				url(r'^condominio/actualizar/(?P<pk>\d+)/$', CondominioActualizar.as_view(), name='condominioActualizar'),
-				url(r'^condominio/eliminar/(?P<pk>\d+)/$', CondominioEliminar.as_view(), name='condominioEliminar'),
+				url(r'^condominio/eliminar/(?P<pk>\d+)/$', CondominioEliminar, name='condominioEliminar'),
 				#proveedores
 				url(r'^proveedor/$', ProveedorListarView.as_view(), name='proveedorListar'),
 				url(r'^proveedor/registrar$', ProveedorRegistrarView.as_view(), name='proveedorRegistrar'),						
@@ -37,7 +37,7 @@ urlpatterns = patterns('',
 				url(r'^servicioMensual/detalle/(?P<pk>\d+)/$', ServicioMensualDetalle.as_view(), name='servicioMensualDetalle'),
 				url(r'^servicioMensual/actualizar/(?P<pk>\d+)/$', ServicioMensualActualizar.as_view(), name='servicioMensualActualizar'),
 				url(r'^servicioMensual/eliminar/(?P<pk>\d+)/$',ServicioMensualEliminar, name='servicioMensualEliminar'),
-				#servicios esepciales
+				#servicios especiales
 				url(r'^servicioEspecial/$', ServicioEspecialListarView.as_view(), name='servicioEspecialListar'),
 				url(r'^servicioEspecial/registrar$', ServicioEspecialRegistrarView.as_view(), name='servicioEspecialRegistrar'),
 				url(r'^servicioEspecial/detalle/(?P<pk>\d+)/$', ServicioEspecialDetalle.as_view(), name='servicioEspecialDetalle'),
