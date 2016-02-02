@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+<div class="page">
+  <div class="page-content">
+
+{% include "mensajes_boostrap.html" %}
+            <div class="page-header">
+              <h3>
+                  <strong>servicios especiales</strong>
+              </h3>
+              <div class="text-right"><a style="text-decoration:none" href="{% url 'administradora_app:servicioEspecialRegistrar' %}" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open">Nuevo</span></a></div>
+            </div><!-- page-header -->
+          <div class="panel">
+            <header class="panel-heading">
+              <h4 class="panel-title">
+                  Tienes <span class="label label-info">{{ cantidad }}</span> servicios especiales registrados
+              </h4>
+            </header>
+            <div class="panel-body">
+
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Nombre del servicio</th>
+                            <th>Proveedor</th>
+                            <th>Condominio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for servicio in object_list %}
+                        <tr>
+                          <td colspan="2"><a style="text-decoration:none" href="{% url 'administradora_app:servicioEspecialActualizar' servicio.proveedor.id %}" data-rel="external">{{ servicio.servicioEspecial }}</a></td>
+                          <td><a style="text-decoration:none" href="{% url 'administradora_app:proveedorDetalle' servicio.proveedor.id %}" data-rel="external"> {{ servicio.proveedor.proveedor }}</a></td>
+                          <td><a style="text-decoration:none" href="{% url 'administradora_app:condominioDetalle' servicio.condominio.id %}" data-rel="external"> {{ servicio.condominio.condominio }}</a></td>
+                          <td class="text-center">
+                                <a style="text-decoration:none" href="{% url 'administradora_app:servicioEspecialDetalle' servicio.id %}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open">Detalle</span></a>
+                                <a style="text-decoration:none" href="{% url 'administradora_app:servicioEspecialActualizar' servicio.id %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil">Actualizar</span></a>
+                                {% if servicio.estatus == 1 %}
+                                <a style="text-decoration:none" href="{% url 'administradora_app:servicioEspecialEliminar' servicio.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash">Desactivar</span></a>
+                                {% else %}
+                                <a style="text-decoration:none" href="{% url 'administradora_app:servicioEspecialEliminar' servicio.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-trash">Reactivar</span></a>
+                                {% endif %}
+                          </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+          </div>
+  </div>
+</div>
+
+
+
+{% endblock contenido %}
