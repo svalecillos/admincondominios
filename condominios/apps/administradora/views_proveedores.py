@@ -19,7 +19,7 @@ class ProveedorRegistrarView(SuccessMessageMixin,CreateView):
 	success_url = reverse_lazy('administradora_app:proveedorRegistrar')
 
 	def form_valid(self, form):
-		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
+		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id);# form.instance.estatus=True
 		return super(ProveedorRegistrarView, self).form_valid(form)
 
 class ProveedorListarView(ListView):
@@ -50,9 +50,14 @@ class ProveedorActualizar(SuccessMessageMixin,UpdateView):
     success_message = "Proveedor actualizado con exito"
     success_url = '/proveedor' #listar
 
-class ProveedorEliminar(SuccessMessageMixin,DeleteView):
 
-    template_name = 'administrador/eliminar_proveedor.html'
-    model = Proveedor
-    success_message = "Proveedor eliminado con exito"
-    success_url = '/proveedor'
+def ProveedorEliminar(request,pk):
+    redireccion='/proveedor'
+    sms='Proveedor eliminado con exito.'
+    template='administrador/eliminar_proveedor.html'
+    r=Reutilizable(request,pk,Proveedor,redireccion,sms)
+
+    if request.method != "POST":
+        return render(request,template,r.diccionario())
+    else:
+        return redirect(r.estatus())
