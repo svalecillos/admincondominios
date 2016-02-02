@@ -11,26 +11,27 @@ from .utiles import *
 
 class CondominioRegistrarView(SuccessMessageMixin,CreateView):
 
-	form_class = RegistrarCondominioForm
-	template_name = 'administrador/registrar_condominio.html'
-	success_url = reverse_lazy('administradora_app:condominioRegistrar')
-	success_message = "Condominio creado con exito"
+    form_class = RegistrarCondominioForm
+    template_name = 'administrador/registrar_condominio.html'
+    success_url = reverse_lazy('administradora_app:condominioRegistrar')
+    success_message = "Condominio creado con exito"
 
-	def form_valid(self, form):
-		form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
-		return super(CondominioRegistrarView, self).form_valid(form)
+    def form_valid(self, form):
+        form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
+        form.instance.estatus=True
+        return super(CondominioRegistrarView, self).form_valid(form)
 
-	def form_invalid(self, form):
-		response = super(CondominioRegistrarView, self).form_invalid(form)
-		if self.request.is_ajax():
-			return JsonResponse(form.errors, status=400)
-		else:
-			ver(form.errors,'form.errors')
-			return response
+        def form_invalid(self, form):
+            response = super(CondominioRegistrarView, self).form_invalid(form)
+            if self.request.is_ajax():
+                return JsonResponse(form.errors, status=400)
+            else:
+                ver(form.errors,'form.errors')
+                return response
 
-	def get_context_data(self,**kwargs):
-		context = super(CondominioRegistrarView, self).get_context_data(**kwargs)
-		return context 
+        def get_context_data(self,**kwargs):
+            context = super(CondominioRegistrarView, self).get_context_data(**kwargs)
+            return context 
 		
 class CondominioListarView(ListView):
 
@@ -60,9 +61,15 @@ class CondominioActualizar(SuccessMessageMixin,UpdateView):
     success_message = "Condominio actualizado con exito"
     success_url = '/condominio' #listar
 
-class CondominioEliminar(SuccessMessageMixin,DeleteView):
 
-    template_name = 'administrador/eliminar_condominio.html'
-    model = Condominio
-    success_message = "Condominio eliminado con exito"
-    success_url = '/condominio'
+def CondominioEliminar(request,pk):
+    redireccion='/condominio'
+    sms='Condominio modificado con exito.'
+    template='administrador/eliminar_condominio.html'
+    r=Reutilizable(request,pk,Condominio,redireccion,sms)
+
+
+    if request.method != "POST":
+        return render(request,template,r.diccionario())
+    else:
+        return redirect(r.estatus())
