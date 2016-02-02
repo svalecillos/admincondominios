@@ -1,5 +1,10 @@
 from django.conf.urls import patterns, url
 from .views import *
+from .views_servicios_especiales import *
+from .views_servicios_mensuales import *
+from .views_condominios import *
+from .views_proveedores import *
+
 
 urlpatterns = patterns('',
 
@@ -7,7 +12,7 @@ urlpatterns = patterns('',
 				url(r'^administradora/registrar_edificacion/(?P<popup>\w{0,50})$', RegistrarTipoEdificacionView.as_view(), name='tipoEdificacionRegistrar'),	
 				url(r'^registrar-usuario$',UsuarioRegistrarView.as_view(),name='usuarioRegistrar'),	
 				url(r'^listar-usuario$',UsuarioListarView.as_view(),name='usuarioListar'),
-				url(r'^administradora/servicioespecial/registrar$', ServicioEspecialRegistrarView.as_view(), name='servicioEspecialRegistrar'),
+				
 				#url(r'^administradora/serviciomensual/registrar$', ServicioMensualRegistrarView.as_view(), name='servicioMensualRegistrar'),
 				url(r'^administradora/costoservicioespecial/registrar$', CostoServicioEspecialRegistrarView.as_view(), name='costoServicioEspecialRegistrar'),
 				url(r'^administradora/costoserviciomensual/registrar$', CostoServicioMensualRegistrarView.as_view(), name='costoServicioMensualRegistrar'),
@@ -32,6 +37,10 @@ urlpatterns = patterns('',
 				url(r'^servicioMensual/detalle/(?P<pk>\d+)/$', ServicioMensualDetalle.as_view(), name='servicioMensualDetalle'),
 				url(r'^servicioMensual/actualizar/(?P<pk>\d+)/$', ServicioMensualActualizar.as_view(), name='servicioMensualActualizar'),
 				url(r'^servicioMensual/eliminar/(?P<pk>\d+)/$',ServicioMensualEliminar, name='servicioMensualEliminar'),
-
-				
+				#servicios esepciales
+				url(r'^servicioEspecial/$', ServicioEspecialListarView.as_view(), name='servicioEspecialListar'),
+				url(r'^servicioEspecial/registrar$', ServicioEspecialRegistrarView.as_view(), name='servicioEspecialRegistrar'),
+				url(r'^servicioEspecial/detalle/(?P<pk>\d+)/$', ServicioEspecialDetalle.as_view(), name='servicioEspecialDetalle'),
+				url(r'^servicioEspecial/actualizar/(?P<pk>\d+)/$', ServicioEspecialActualizar.as_view(), name='servicioEspecialActualizar'),
+				url(r'^servicioEspecial/eliminar/(?P<pk>\d+)/$',ServicioEspecialEliminar, name='servicioEspecialEliminar'),
 	)
