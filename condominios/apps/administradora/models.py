@@ -46,6 +46,7 @@ class Proveedor(models.Model):
 	telefono = models.CharField(max_length=12,null=True)	
 	correo = models.EmailField(null=True)
 	condominio = models.ForeignKey(Condominio)
+	estatus = models.BooleanField(default=True)	
 	creadoPor = models.ForeignKey(Usuario)
 
 	def __str__(self):
