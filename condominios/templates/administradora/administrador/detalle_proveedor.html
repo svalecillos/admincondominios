@@ -33,7 +33,7 @@
               </tr>
               <tr>
                 <td class="text-left">
-                  <b>Condominio:</b> <a style="text-decoration:none" href="/condominio/detalle/{{ object.condominio.id }}" data-rel="external"> {{ object.condominio.condominio }}</a> 
+                  <b>Condominio:</b> <a style="text-decoration:none" href="{% url 'administradora_app:condominioDetalle' object.condominio.id %}" data-rel="external"> {{ object.condominio.condominio }}</a> 
                 </td>             
               </tr>              
             </tbody>

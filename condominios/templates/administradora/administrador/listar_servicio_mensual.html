@@ -33,8 +33,8 @@
                         {% for servicio in object_list %}
                         <tr>
                           <td colspan="2"><a style="text-decoration:none" href="/servicioMensual/actualizar/{{ servicio.id }}" data-rel="external">{{ servicio.servicioMensual }}</a></td>
-                          <td>{{ servicio.proveedor.proveedor }}</td>
-                          <td>{{ servicio.condominio.condominio }}</td>
+                          <td><a style="text-decoration:none" href="{% url 'administradora_app:proveedorDetalle' servicio.proveedor.id %}" data-rel="external"> {{ servicio.proveedor.proveedor }}</a></td>
+                          <td><a style="text-decoration:none" href="{% url 'administradora_app:condominioDetalle' servicio.condominio.id %}" data-rel="external"> {{ servicio.condominio.condominio }}</a></td>
                           <td class="text-center">
                                 <a style="text-decoration:none" href="{% url 'administradora_app:servicioMensualDetalle' servicio.id %}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open">Detalle</span></a>
                                 <a style="text-decoration:none" href="{% url 'administradora_app:servicioMensualActualizar' servicio.id %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil">Actualizar</span></a>
