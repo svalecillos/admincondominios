@@ -14,10 +14,22 @@ from .utiles import *
 class CondominioRegistrarView(SuccessMessageMixin,CreateView):
     
     form_class = RegistrarCondominioForm
-    template_name = 'administrador/registrar_condominio.html'
+    #
     success_url = reverse_lazy('administradora_app:condominioRegistrar')
     success_message = "Condominio creado con exito"
 
+
+    def get(self, request, *args, **kwargs):
+        return super(CondominioRegistrarView,self).get(self, request, *args, **kwargs)
+
+    def get_template_names(self):
+        frame=self.request.GET.get('frameset')
+        ver(frame)
+        if frame == 1:
+            self.template_name = 'administrador/registrar_condominio_iframe.html'
+        else:
+            self.template_name = 'administrador/registrar_condominio.html'
+        return self.template_name
 
     def form_valid(self, form):
         form.instance.creadoPor = Usuario.objects.get(pk=self.request.user.id)
