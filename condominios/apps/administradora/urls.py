@@ -27,7 +27,7 @@ urlpatterns = patterns('',
 				url(r'^condominio/eliminar/(?P<pk>\d+)/$', CondominioEliminar, name='condominioEliminar'),
 				#proveedores
 				url(r'^proveedor/$', ProveedorListarView.as_view(), name='proveedorListar'),
-				url(r'^proveedor/registrar$', ProveedorRegistrarView.as_view(), name='proveedorRegistrar'),						
+				url(r'^proveedor/registrar$', ProveedorRegistrarView.as_view(), name='proveedorRegistrar',prefix={'i':'f'}),
 				url(r'^proveedor/detalle/(?P<pk>\d+)/$', ProveedorDetalle.as_view(), name='proveedorDetalle'),
 				url(r'^proveedor/actualizar/(?P<pk>\d+)/$', ProveedorActualizar.as_view(), name='proveedorActualizar'),
 				url(r'^proveedor/eliminar/(?P<pk>\d+)/$', ProveedorEliminar, name='proveedorEliminar'),				
