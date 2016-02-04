@@ -1,0 +1,176 @@
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript">
+
+$(document).ready(function () {
+$.ajaxSetup({ 
+    beforeSend: function(xhr, settings) {
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+// Does this cookie string begin with the name we want?
+    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+    }
+    }
+    }
+    return cookieValue;
+    }
+    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+    // Only send the token to relative URLs i.e. locally.
+    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+    }
+    } 
+    });
+
+$.ajax({
+    type: "post",
+    url: "/api/ajax/estados",
+    data: "{}",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+        $("#estados").empty()
+        $("#estados").append($(document.createElement('option')).text('Seleccione un estado'));
+          for (var i = data.resultado.length - 1; i >= 0; i--) {
+              var option = $(document.createElement('option'));
+              option.text(data.resultado[i].estado);
+              option.val(data.resultado[i].id);
+              $("#estados").append(option);
+        }
+        $("#estados").change(function () {
+            $("#municipios").empty()
+            $("#municipios").append($(document.createElement('option')).text('Seleccione un municipio'));
+            elegido=$("#estados option:selected");
+                $.post("/api/ajax/municipios", { elegido: elegido.val() }, function(data){
+                    for (var i = data.resultado.length - 1; i >= 0; i--) {
+                      var option = $(document.createElement('option'));
+                      option.text(data.resultado[i].municipio);
+                      option.val(data.resultado[i].id);
+                      $("#municipios").append(option);
+                      }//fin for
+                });
+        })
+        $("#municipios").change(function () {
+            $("#parroquia").empty()
+            $("#parroquia").append($(document.createElement('option')).text('Seleccione una parroquia'));
+            elegido=$("#municipios option:selected");
+                $.post("/api/ajax/parroquias", { elegido: elegido.val() }, function(data){
+                    for (var i = data.resultado.length - 1; i >= 0; i--) {
+                      var option = $(document.createElement('option'));
+                      option.text(data.resultado[i].parroquia);
+                      option.val(data.resultado[i].id);
+                      $("#parroquia").append(option);
+                    }//fin for
+                });
+        })                        
+
+    },//fin success 1
+
+
+
+error: function (msg) {
+    $("#dvAlerta > span").text("Error al llenar el combo");
+  }
+});
+
+
+$('#buscarcondominios').keyup(function(e){
+  consulta = $("#buscarcondominios").val();
+    $.ajax({
+      data: {'nombre': consulta},
+      url: '/api/ajax/buscar_condominio',
+      type: 'get',
+      success : function(data) {
+        console.log(data.resultado[0].condominio);
+        $('#resultadobuscador').text(data.resultado[0].condominio)
+      },
+      error : function(message) {
+        console.log(message);
+      }
+    });
+  });
+
+
+});
+
+
+</script>
+<div class="page">
+  <div class="page-content">
+{% include "mensajes_boostrap.html" %} 
+      <div class="page-content vertical-align-middle">
+      <div class="brand">
+        <h2 class="brand-text">Registrar condominio</h2>
+      </div>
+      <form method="POST" role="form">{% csrf_token %}
+		
+        <div class="form-group">
+          {{ form.condominio }}
+          {{ form.condominio.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.rif }}
+          {{ form.rif.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.telefono }}
+          {{ form.telefono.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.correo }}
+          {{ form.correo.errors }}
+        </div>
+        <div class="form-group">
+          <select id="estados" class='form-control'>
+            <option value="">Seleccione un estado</option>
+          </select>
+        </div>        
+        <div class="form-group">
+          <select name="municipios" id="municipios" class='form-control'>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="parroquia" id="parroquia" class='form-control'>
+          </select>
+        </div>
+        <div class="form-group">
+          {{ form.ciudad }}
+          {{ form.ciudad.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.avenidaCalle }}
+          {{ form.avenidaCalle.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.urbanizacionSector }}
+          {{ form.urbanizacionSector.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.tipoEdificacion }}
+          {{ form.tipoEdificacion.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.nombreEdificacion }}
+          {{ form.nombreEdificacion.errors }}
+        </div>          
+        <button type="submit" class="btn btn-primary btn-block">Guardar condominio</button>
+      </form>
+      <div class="form-group clearfix"> 
+          <button type="button" class="btn btn-info btn-block" onclick="history.back();">Volver</button>
+      </div>
+    </div>
+      <div class="alert alert-dismissable alert-danger"}>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{ form.errors }}
+      </div>
+
+<input type="text" placeholder="Buscar condominios" id="buscarcondominios">
+<div id="resultadobuscador"></div>  
+</div>
+</div>
+
